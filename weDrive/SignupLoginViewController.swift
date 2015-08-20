@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  WeDriveTong
 //
-//  Created by Jeanette Zhang on 19/07/2015.
+//  Created by Jeanette Zhang123 on 19/07/2015.
 //  Copyright (c) 2015 Jeanette Zhang. All rights reserved.
 //
 
