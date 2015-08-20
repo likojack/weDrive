@@ -20,9 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("07Ca5MegzkXLxw9cT6QB3CdzLlIsKclcBawFBeeu", clientKey: "PqhkCX8IAUp4aakS56OYwqU0IhFbPa6ZuB9H1Cuw")
-        var object = PFObject(className: "testDataClass")
-        object.addObject("iOSBlog", forKey: "websiteUrl")
-        object.addObject("Five", forKey: "websiteRating")
+        var object = PFObject(className: "Event")
+        object.addObject("People", forKey: "String[]")
+        object.addObject("Time", forKey: "String")
+        object.addObject("startPoint", forKey: "String")
+        object.addObject("destination", forKey: "String")
         object.save()
         return true
     }
