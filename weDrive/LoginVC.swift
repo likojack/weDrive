@@ -43,6 +43,7 @@ class LoginVC: UIViewController {
 	
 	
 	/*********** Login with Facebook ***********/
+	/*
 	let permissions = ["public_profile", "email", "user_friends"]
 
 	@IBAction func faceBookLoginButton(sender: UIButton) {
@@ -51,8 +52,9 @@ class LoginVC: UIViewController {
 			else if user!.isNew { NSLog("User signed up and logged in through Facebook! \(user)") }
 			else if user != nil{NSLog("User logged in through Facebook! \(user)") }
 		})
-	}
 	
+	}
+	*/
 
 
 

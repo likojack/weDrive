@@ -38,7 +38,7 @@ class SignupVC: UIViewController{
 				incompleteSignupInfoAlert.show()
 			} else { //user created
 				println("User successfully signed up through Parse! \(newUser)")
-				self.performSegueWithIdentifier("SignupLoginSegue", sender: self)
+				self.performSegueWithIdentifier("signupLoginSegue", sender: self)
 			}
 		})
 		
