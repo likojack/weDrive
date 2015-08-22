@@ -43,7 +43,7 @@ class LoginVC: UIViewController {
 	
 	
 	/*********** Login with Facebook ***********/
-	/*
+	
 	let permissions = ["public_profile", "email", "user_friends"]
 
 	@IBAction func faceBookLoginButton(sender: UIButton) {
@@ -54,7 +54,7 @@ class LoginVC: UIViewController {
 		})
 	
 	}
-	*/
+	
 
 
 
