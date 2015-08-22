@@ -1,12 +1,9 @@
 //
-//  weDrive-Bridging-Header.h
-//  weDrive
-//
-//  Created by kejielee on 5/08/2015.
-//  Copyright (c) 2015 michelle. All rights reserved.
+//  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>

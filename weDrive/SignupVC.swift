@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+//import Parse
 class SignupVC: UIViewController{
 	
 	@IBOutlet weak var signupFirstnameField: UITextField!

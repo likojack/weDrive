@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+//import Parse
 
 class LoginVC: UIViewController {
 	/*********** Basic login ***********/
@@ -43,16 +43,19 @@ class LoginVC: UIViewController {
 	
 	
 	/*********** Login with Facebook ***********/
-	
 	let permissions = ["public_profile", "email", "user_friends"]
 
 	@IBAction func faceBookLoginButton(sender: UIButton) {
 		PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {(user:PFUser?, error: NSError?) -> Void in
 			if user == nil { NSLog("User cancelled the Facebook login.") }
-			else if user!.isNew { NSLog("User signed up and logged in through Facebook! \(user)") }
-			else if user != nil{NSLog("User logged in through Facebook! \(user)") }
+			else if user!.isNew {
+				NSLog("User signed up and logged in through Facebook! \(user)")
+				self.performSegueWithIdentifier("loginSegue", sender: self)
+			} else if user != nil{
+				NSLog("User logged in through Facebook! \(user)")
+				self.performSegueWithIdentifier("loginSegue", sender: self)
+			}
 		})
-	
 	}
 	
 

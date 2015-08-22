@@ -514,6 +514,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="faceBookLoginButton:" destination="8h1-lI-XRO" eventType="touchUpInside" id="zmp-w4-pZC"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpD-C1-Fmc">
                                 <rect key="frame" x="66" y="283" width="468" height="30"/>
@@ -714,7 +717,7 @@
         <image name="default.jpg" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7A5-Mm-ppr"/>
+        <segue reference="2jH-pT-p4o"/>
         <segue reference="Bez-eO-JaA"/>
     </inferredMetricsTieBreakers>
 </document>

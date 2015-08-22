@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 import Parse
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         object.addObject("startPoint", forKey: "String")
         object.addObject("destination", forKey: "String")
         object.save()
+		
 		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         return true
     }
