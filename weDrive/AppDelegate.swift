@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         object.addObject("startPoint", forKey: "String")
         object.addObject("destination", forKey: "String")
         object.save()
+		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         return true
     }
 
