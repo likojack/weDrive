@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Parse.setApplicationId("07Ca5MegzkXLxw9cT6QB3CdzLlIsKclcBawFBeeu", clientKey: "PqhkCX8IAUp4aakS56OYwqU0IhFbPa6ZuB9H1Cuw")
+        Parse.setApplicationId("w0x2zMF6iNZybWXztr3n9tz292lgO7e7IIOxYRa2", clientKey: "5VWmZAbc1hRcsL2Fd4eLt4omFEEkmnnG5nTsTQOs")
         var object = PFObject(className: "Event")
         object.addObject("People", forKey: "String[]")
         object.addObject("Time", forKey: "String")
