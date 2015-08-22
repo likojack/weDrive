@@ -37,7 +37,6 @@
 		0A0FF4381B71B09E006798F5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A0FF4361B71B09E006798F5 /* GoogleMaps.bundle */; };
 		0A0FF4391B71B09E006798F5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4371B71B09E006798F5 /* GoogleMaps.framework */; };
 		0A0FF43C1B71B2B6006798F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0FF43B1B71B2B6006798F5 /* MapViewController.swift */; };
-		0A0FF43E1B733921006798F5 /* SignupLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0FF43D1B733921006798F5 /* SignupLoginViewController.swift */; };
 		0A0FF4401B733CB9006798F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF43F1B733CB9006798F5 /* Social.framework */; };
 		0A0FF4421B733D0D006798F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4411B733D0D006798F5 /* Accounts.framework */; };
 		0AE2D9971B65A3EC005C4C52 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE2D9961B65A3EC005C4C52 /* ContactListViewController.swift */; };
@@ -54,6 +53,8 @@
 		699271641B5E99B900660E95 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699271631B5E99B900660E95 /* default.jpg */; };
 		699271661B5EA31500660E95 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699271651B5EA31500660E95 /* ZoomViewController.swift */; };
 		69F541231B70FD5C00FC111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F541211B70FD5C00FC111C /* Main.storyboard */; };
+		E5F4A7171B888E2400F46ED6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7151B888E2400F46ED6 /* LoginVC.swift */; };
+		E5F4A7181B888E2400F46ED6 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7161B888E2400F46ED6 /* SignupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +99,6 @@
 		0A0FF4371B71B09E006798F5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		0A0FF43A1B71B12F006798F5 /* weDrive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weDrive-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A0FF43B1B71B2B6006798F5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		0A0FF43D1B733921006798F5 /* SignupLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLoginViewController.swift; sourceTree = "<group>"; };
 		0A0FF43F1B733CB9006798F5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0A0FF4411B733D0D006798F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0AE2D9961B65A3EC005C4C52 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +119,8 @@
 		699271631B5E99B900660E95 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = SOURCE_ROOT; };
 		699271651B5EA31500660E95 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		69F541221B70FD5C00FC111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5F4A7151B888E2400F46ED6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ../../WeDriveTong/WeDriveTong/WeDriveTong/LoginVC.swift; sourceTree = "<group>"; };
+		E5F4A7161B888E2400F46ED6 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupVC.swift; path = ../../WeDriveTong/WeDriveTong/WeDriveTong/SignupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,8 +238,9 @@
 			isa = PBXGroup;
 			children = (
 				0A0FF4181B71AE30006798F5 /* parse-library-1.7.5-2 */,
+				E5F4A7151B888E2400F46ED6 /* LoginVC.swift */,
+				E5F4A7161B888E2400F46ED6 /* SignupVC.swift */,
 				0AE2D99A1B67A89E005C4C52 /* Event.swift */,
-				0A0FF43D1B733921006798F5 /* SignupLoginViewController.swift */,
 				699271631B5E99B900660E95 /* default.jpg */,
 				6992715D1B5E626600660E95 /* Tidbinbilla.jpg */,
 				0A0FF3DA1B71AABB006798F5 /* DatePickerDialog.swift */,
@@ -385,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F4A7181B888E2400F46ED6 /* SignupVC.swift in Sources */,
+				E5F4A7171B888E2400F46ED6 /* LoginVC.swift in Sources */,
 				0AE2D99B1B67A89E005C4C52 /* Event.swift in Sources */,
 				0AE2D9971B65A3EC005C4C52 /* ContactListViewController.swift in Sources */,
 				699271601B5E65A900660E95 /* EventDetailViewController.swift in Sources */,
@@ -394,7 +399,6 @@
 				6992713C1B5E603000660E95 /* weDrive.xcdatamodeld in Sources */,
 				699271391B5E603000660E95 /* AppDelegate.swift in Sources */,
 				699271621B5E7B6B00660E95 /* CreateEventViewController.swift in Sources */,
-				0A0FF43E1B733921006798F5 /* SignupLoginViewController.swift in Sources */,
 				0A0FF3DB1B71AABB006798F5 /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

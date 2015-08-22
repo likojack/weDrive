@@ -525,7 +525,7 @@
         <!--Login-->
         <scene sceneID="KSu-Yb-8V3">
             <objects>
-                <viewController id="8h1-lI-XRO" customClass="LoginVC" customModule="WeDriveTong" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8h1-lI-XRO" customClass="LoginVC" customModule="weDrive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RmO-p3-uYz"/>
                         <viewControllerLayoutGuide type="bottom" id="qJF-NM-jhx"/>
