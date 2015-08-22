@@ -53,6 +53,8 @@
 		699271641B5E99B900660E95 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699271631B5E99B900660E95 /* default.jpg */; };
 		699271661B5EA31500660E95 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699271651B5EA31500660E95 /* ZoomViewController.swift */; };
 		69F541231B70FD5C00FC111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F541211B70FD5C00FC111C /* Main.storyboard */; };
+		E5F4A7171B888E2400F46ED6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7151B888E2400F46ED6 /* LoginVC.swift */; };
+		E5F4A7181B888E2400F46ED6 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7161B888E2400F46ED6 /* SignupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		699271631B5E99B900660E95 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = SOURCE_ROOT; };
 		699271651B5EA31500660E95 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		69F541221B70FD5C00FC111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5F4A7151B888E2400F46ED6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ../../WeDriveTong/WeDriveTong/WeDriveTong/LoginVC.swift; sourceTree = "<group>"; };
+		E5F4A7161B888E2400F46ED6 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupVC.swift; path = ../../WeDriveTong/WeDriveTong/WeDriveTong/SignupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				0A0FF4181B71AE30006798F5 /* parse-library-1.7.5-2 */,
+				E5F4A7151B888E2400F46ED6 /* LoginVC.swift */,
+				E5F4A7161B888E2400F46ED6 /* SignupVC.swift */,
 				0AE2D99A1B67A89E005C4C52 /* Event.swift */,
 				699271631B5E99B900660E95 /* default.jpg */,
 				6992715D1B5E626600660E95 /* Tidbinbilla.jpg */,
@@ -382,6 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F4A7181B888E2400F46ED6 /* SignupVC.swift in Sources */,
+				E5F4A7171B888E2400F46ED6 /* LoginVC.swift in Sources */,
 				0AE2D99B1B67A89E005C4C52 /* Event.swift in Sources */,
 				0AE2D9971B65A3EC005C4C52 /* ContactListViewController.swift in Sources */,
 				699271601B5E65A900660E95 /* EventDetailViewController.swift in Sources */,
