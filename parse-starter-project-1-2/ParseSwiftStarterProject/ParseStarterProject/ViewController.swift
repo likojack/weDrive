@@ -181,6 +181,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 product["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                 product["latitude"] = la
                 product["longitude"] = lo
+                product["sharing"] = self.sharing
                 product.saveInBackground()
                 
             }
@@ -207,8 +208,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
         if(tempuserdic.keys.first != nil && sharing)
         {
-            let a1 = tempuserdic.keys.first!
-            let a2 = tempuserdic.values.first!
+            var a1 = tempuserdic.keys.first!
+            var a2 = tempuserdic.values.first!
             
             query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
@@ -241,10 +242,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         
                         var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
+ 
                         anno1.coordinate = loc
                         anno1.title = c
                         
-                        
+
                         self.map1.addAnnotation(anno1)
                     
                     }
@@ -266,12 +268,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            let a1 = tempuserdic.keys.first!
-            let a2 = tempuserdic.values.first!
+            var a1 = tempuserdic.keys.first!
+            var a2 = tempuserdic.values.first!
              println("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
             
             
-            query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
+            query2.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
@@ -321,14 +323,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         
        
-        /*
+        
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            let a1 = tempuserdic.keys.first!
-            let a2 = tempuserdic.values.first!
+            var a1 = tempuserdic.keys.first!
+            var a2 = tempuserdic.values.first!
             
-            query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
+            query3.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
@@ -382,10 +384,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            let a1 = tempuserdic.keys.first!
-            let a2 = tempuserdic.values.first!
+            var a1 = tempuserdic.keys.first!
+            var a2 = tempuserdic.values.first!
             
-            query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
+            query4.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
@@ -439,10 +441,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            let a1 = tempuserdic.keys.first!
-            let a2 = tempuserdic.values.first!
+            var a1 = tempuserdic.keys.first!
+            var a2 = tempuserdic.values.first!
             
-            query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
+            query5.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
@@ -489,7 +491,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
         }
 
-        */
+
 
         
 
