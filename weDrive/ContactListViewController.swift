@@ -5,12 +5,37 @@
 //  Created by kejielee on 27/07/2015.
 //  Copyright (c) 2015 michelle. All rights reserved.
 //
-
+import Parse
 import UIKit
 
 class ContactListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var people = ["George", "Ben", "Cindy"]
+    
+    
+    
+    
+    
+
+//    if error == nil {
+//    // The find succeeded.
+//    
+//    for object in objects {
+//
+//    self.people.append(object.username)
+//    
+//    
+//    }
+//    else {
+//    // Log details of the failure
+//    NSLog("Error: %@ %@", error, error.userInfo!)
+//    }
+//    
+//    dispatch_async(dispatch_get_main_queue()) {
+//    self.tableView.reloadData()
+//    }
+    
+    
     var name : String = ""
     var note : String = ""
     var from : String = ""
@@ -26,6 +51,24 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
         navigationItem.leftBarButtonItem = backButton
         let rightButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "doneTapped:")
         navigationItem.rightBarButtonItem = rightButton
+        
+        var que = PFQuery(className: "User")
+        que.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                
+                // Do something with the found objects
+                if let objs = objects {
+                    for object in objs {
+                        self.people.append(object.username)
+                    }
+                }
+                
+            } else {
+                println("\(error)")
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,6 +84,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        
         cell.textLabel?.text = people[indexPath.row]
         return cell
 

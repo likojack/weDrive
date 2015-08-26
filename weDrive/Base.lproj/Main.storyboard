@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="70O-Ws-687">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -94,6 +94,10 @@
                                 <state key="normal" title="Start">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="StartTapped:" destination="Lnc-NE-MLO" eventType="touchUpInside" id="4dB-Bh-95M"/>
+                                    <segue destination="Ct5-1D-yNm" kind="show" identifier="ToLocationSharing" id="xEr-Hb-zUn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNb-hN-GEC">
                                 <rect key="frame" x="247" y="535" width="33" height="30"/>
@@ -108,6 +112,15 @@
                                 <rect key="frame" x="202" y="249" width="54" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A1N-CT-mGu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Event" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lp-1k-iVx">
+                                <rect key="frame" x="202" y="213" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="PgM-uH-ikn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,8 +193,8 @@
                                     <constraint firstAttribute="width" constant="100" id="9WA-fm-YJG"/>
                                 </constraints>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-iR-cnZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4DX-iR-cnZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="YoL-zP-NUh"/>
                                     <constraint firstAttribute="height" constant="60" id="sbT-Ur-ggQ"/>
@@ -201,6 +214,12 @@
                                 <rect key="frame" x="265" y="446" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohs-WQ-glK">
+                                <rect key="frame" x="264" y="213" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -226,6 +245,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="eventLabel" destination="ohs-WQ-glK" id="G4u-bU-gpU"/>
                         <outlet property="fromLabel" destination="9C3-uW-ZdH" id="JpJ-ty-c9G"/>
                         <outlet property="noteLabel" destination="Hom-p4-D51" id="u7K-bF-qzl"/>
                         <outlet property="peopleLabel" destination="Us8-mN-IuS" id="Tt2-cs-7QP"/>
@@ -298,6 +318,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Va5-EI-lYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2020" y="857"/>
+        </scene>
+        <!--Location Sharing View Controller-->
+        <scene sceneID="4dm-Gp-uEz">
+            <objects>
+                <viewController id="Ct5-1D-yNm" customClass="LocationSharingViewController" customModule="weDrive" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W21-2X-K0a"/>
+                        <viewControllerLayoutGuide type="bottom" id="w9x-6h-WO7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Srk-JC-JqN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ru-PL-U3s">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="map1" destination="9ru-PL-U3s" id="X2x-N2-h40"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoR-8o-vjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="-1064"/>
         </scene>
         <!--Zoom View Controller-->
         <scene sceneID="fen-NM-cWf">
@@ -543,7 +589,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-   or   -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD7-Tq-KSu">
-                                <rect key="frame" x="66" y="243" width="468" height="20.5"/>
+                                <rect key="frame" x="66" y="243" width="468" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -717,7 +763,7 @@
         <image name="default.jpg" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2jH-pT-p4o"/>
         <segue reference="Bez-eO-JaA"/>
+        <segue reference="dFF-Yg-ybM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,12 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.setApplicationId("w0x2zMF6iNZybWXztr3n9tz292lgO7e7IIOxYRa2", clientKey: "5VWmZAbc1hRcsL2Fd4eLt4omFEEkmnnG5nTsTQOs")
-        var object = PFObject(className: "Event")
-        object.addObject("People", forKey: "String[]")
-        object.addObject("Time", forKey: "String")
-        object.addObject("startPoint", forKey: "String")
-        object.addObject("destination", forKey: "String")
-        object.save()
 		
 		PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         return true

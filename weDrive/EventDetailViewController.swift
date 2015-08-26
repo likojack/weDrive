@@ -25,6 +25,8 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var noteLabel: UILabel!
     
+    @IBOutlet weak var eventLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +35,10 @@ class EventDetailViewController: UIViewController {
             printPeople = printPeople + " " + self.event!.people[i]
         }
         
+        
         self.navigationItem.title = self.event!.name
         self.previewImageView.image = UIImage(data: self.event!.previewimage)
+        self.eventLabel.text = self.event?.name
         self.fromLabel.text = self.event!.from
         self.toLabel.text = self.event!.to
         self.peopleLabel.text = printPeople
@@ -51,18 +55,30 @@ class EventDetailViewController: UIViewController {
         self.performSegueWithIdentifier("zoomSegue", sender: self)
     }
     
+    @IBAction func StartTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("ToLocationSharing", sender: self)
+    }
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "zoomSegue" {
             var zoomViewController = segue.destinationViewController as! ZoomViewController
             zoomViewController.image = self.tappedImage!
         }
+        
+        if segue.identifier == "ToLocationSharing" {
+            var locationViewController = segue.destinationViewController as! LocationSharingViewController
+            locationViewController.user = PFUser.currentUser()!.username!
+            locationViewController.gname = self.event!.name
+        }
     }
 
     @IBAction func backTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("detailBackSegue", sender: self)
     }
-
+    
 
 
 }

@@ -112,6 +112,15 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         //event.time = selectedDate
         event.time = self.timeTextField.text
         context.save(nil)
+        var TestObject = PFObject(className: "Events")
+        TestObject["eventName"] = event.name
+        TestObject["startPoint"] = event.from
+        TestObject["endPoint"] = event.to
+        TestObject["participants"] = event.people
+        
+        
+        TestObject.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in println("object saved")}
+        
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
     }
     
