@@ -61,7 +61,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
                 // Do something with the found objects
                 if let objs = objects {
                     for object in objs {
-                        self.people.append(object.username)
+                       // self.people.append(object.username)
                     }
                 }
                 

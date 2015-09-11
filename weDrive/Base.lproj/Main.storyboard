@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="70O-Ws-687">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -219,7 +219,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohs-WQ-glK">
                                 <rect key="frame" x="264" y="213" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -403,6 +403,63 @@
             </objects>
             <point key="canvasLocation" x="1153" y="-296"/>
         </scene>
+        <!--Forget PasswordVC-->
+        <scene sceneID="ywR-Pb-0d8">
+            <objects>
+                <viewController id="lUR-E9-edF" customClass="ForgetPasswordVC" customModule="weDrive" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1UG-g8-96L"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ccg-3f-v5D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aSC-PF-ECf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type you email here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gae-Xh-Rcg">
+                                <rect key="frame" x="66" y="200" width="468" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter you registered email and we'll send instructions to recover your password" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHn-0A-67V">
+                                <rect key="frame" x="71" y="144" width="458" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFd-AR-hoP">
+                                <rect key="frame" x="66" y="310" width="468" height="30"/>
+                                <color key="backgroundColor" red="0.27089192439999998" green="0.77874447599999996" blue="0.3756915073" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="8h1-lI-XRO" eventType="touchUpInside" id="gF4-Tw-ayX"/>
+                                    <action selector="sendRecoveryEmailButton:" destination="lUR-E9-edF" eventType="touchUpInside" id="ukC-8R-Nai"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LFd-AR-hoP" secondAttribute="trailing" constant="50" id="18f-BA-fSi"/>
+                            <constraint firstItem="gae-Xh-Rcg" firstAttribute="top" secondItem="tHn-0A-67V" secondAttribute="bottom" constant="20" id="BhU-kM-S3L"/>
+                            <constraint firstItem="LFd-AR-hoP" firstAttribute="leading" secondItem="aSC-PF-ECf" secondAttribute="leadingMargin" constant="50" id="D85-MI-JKC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tHn-0A-67V" secondAttribute="trailing" constant="55" id="FzB-jM-wfe"/>
+                            <constraint firstItem="gae-Xh-Rcg" firstAttribute="leading" secondItem="aSC-PF-ECf" secondAttribute="leadingMargin" constant="50" id="Jpe-fh-Mbv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gae-Xh-Rcg" secondAttribute="trailing" constant="50" id="Qjd-dK-lU5"/>
+                            <constraint firstItem="LFd-AR-hoP" firstAttribute="top" secondItem="gae-Xh-Rcg" secondAttribute="bottom" constant="80" id="aSu-rQ-KFk"/>
+                            <constraint firstItem="tHn-0A-67V" firstAttribute="leading" secondItem="aSC-PF-ECf" secondAttribute="leadingMargin" constant="55" id="i8D-JM-B1g"/>
+                            <constraint firstItem="tHn-0A-67V" firstAttribute="top" secondItem="1UG-g8-96L" secondAttribute="bottom" constant="80" id="rjM-9x-Jls"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="gae-Xh-Rcg" id="eCP-E5-Xpd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Rc-uz-2Zy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1349" y="-214"/>
+        </scene>
         <!--Create Event View Controller-->
         <scene sceneID="Ly2-Sp-f7N">
             <objects>
@@ -539,7 +596,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3E4-iU-Blx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2020" y="-684"/>
+            <point key="canvasLocation" x="-2088" y="-896"/>
         </scene>
         <!--Login-->
         <scene sceneID="KSu-Yb-8V3">
@@ -581,6 +638,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="lUR-E9-edF" kind="show" id="vmS-Qn-4s3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="weDrive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hXX-1o-deP">
                                 <rect key="frame" x="66" y="50" width="468" height="78"/>
@@ -664,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C2g-0M-Yhb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1301" y="-684"/>
+            <point key="canvasLocation" x="-1349" y="-896"/>
         </scene>
         <!--SignupVC-->
         <scene sceneID="fYO-Nb-JrH">
@@ -763,7 +823,7 @@
         <image name="default.jpg" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2jH-pT-p4o"/>
         <segue reference="Bez-eO-JaA"/>
-        <segue reference="dFF-Yg-ybM"/>
     </inferredMetricsTieBreakers>
 </document>

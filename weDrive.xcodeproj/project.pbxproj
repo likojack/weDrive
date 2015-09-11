@@ -52,6 +52,7 @@
 		699271641B5E99B900660E95 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699271631B5E99B900660E95 /* default.jpg */; };
 		699271661B5EA31500660E95 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699271651B5EA31500660E95 /* ZoomViewController.swift */; };
 		69F541231B70FD5C00FC111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F541211B70FD5C00FC111C /* Main.storyboard */; };
+		E54D17781BA298F80036A0DC /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */; };
 		E5F4A71B1B8893EA00F46ED6 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7191B8893EA00F46ED6 /* SignupVC.swift */; };
 		E5F4A71C1B8893EA00F46ED6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A71A1B8893EA00F46ED6 /* LoginVC.swift */; };
 		E5F4A7251B88A4D100F46ED6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */; };
@@ -119,6 +120,7 @@
 		699271631B5E99B900660E95 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = SOURCE_ROOT; };
 		699271651B5EA31500660E95 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		69F541221B70FD5C00FC111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		E5F4A7191B8893EA00F46ED6 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		E5F4A71A1B8893EA00F46ED6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = weDrive/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				0A0FF4181B71AE30006798F5 /* parse-library-1.7.5-2 */,
 				0AE2D99A1B67A89E005C4C52 /* Event.swift */,
 				E5F4A71A1B8893EA00F46ED6 /* LoginVC.swift */,
+				E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */,
 				E5F4A7191B8893EA00F46ED6 /* SignupVC.swift */,
 				699271631B5E99B900660E95 /* default.jpg */,
 				6992715D1B5E626600660E95 /* Tidbinbilla.jpg */,
@@ -407,6 +410,7 @@
 				699271391B5E603000660E95 /* AppDelegate.swift in Sources */,
 				699271621B5E7B6B00660E95 /* CreateEventViewController.swift in Sources */,
 				E5F4A71B1B8893EA00F46ED6 /* SignupVC.swift in Sources */,
+				E54D17781BA298F80036A0DC /* ForgetPasswordVC.swift in Sources */,
 				0A0FF3DB1B71AABB006798F5 /* DatePickerDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
