@@ -30,6 +30,8 @@ class SignupVC: UIViewController{
 		
 		var newUser=PFUser()
 		newUser.username = signupEmail //NOTE: use email as username
+		newUser["firstName"]=signupFirstname
+		newUser["lastName"]=signupLastname
 		newUser.password = signupPassword
 		newUser.email = signupEmail
 		newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
