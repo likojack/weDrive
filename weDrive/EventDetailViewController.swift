@@ -45,7 +45,7 @@ class EventDetailViewController: UIViewController {
         self.noteLabel.text = self.event!.note
         self.timeLabel.text = self.event?.time
         
-        var previewTapRecognizer = UITapGestureRecognizer(target: self, action: "previewTapped")
+        let previewTapRecognizer = UITapGestureRecognizer(target: self, action: "previewTapped")
         self.previewImageView.addGestureRecognizer(previewTapRecognizer)
         
     }
@@ -64,12 +64,12 @@ class EventDetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "zoomSegue" {
-            var zoomViewController = segue.destinationViewController as! ZoomViewController
+            let zoomViewController = segue.destinationViewController as! ZoomViewController
             zoomViewController.image = self.tappedImage!
         }
         
         if segue.identifier == "ToLocationSharing" {
-            var locationViewController = segue.destinationViewController as! LocationSharingViewController
+            let locationViewController = segue.destinationViewController as! LocationSharingViewController
             locationViewController.user = PFUser.currentUser()!.username!
             locationViewController.gname = self.event!.name
         }

@@ -56,7 +56,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
             
             if error == nil {
                 // The find succeeded.
-                println("Successfully retrieved ")
+                print("Successfully retrieved ")
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
                     for object in objects {
@@ -64,9 +64,9 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //println(object["uID"])
                         let temp : String = object.objectId!
                         let temp2 : String = object["uID"]! as! String
-                        println("********")
+                        print("********")
                         self.userdic[temp2] = temp
-                        println(self.userdic)
+                        print(self.userdic)
                         
                         self.notemptyDictionary = true
                         
@@ -75,43 +75,43 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 }
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // println(locations)
         //println("*********************")
         
         
         // this is for map and user location
-        var query = PFQuery(className: "Locations")
+        let query = PFQuery(className: "Locations")
         
-        var userlocation: CLLocation = locations[0] as! CLLocation
+        let userlocation: CLLocation = locations[0] 
         
-        var latitude = userlocation.coordinate.latitude
-        var longitude = userlocation.coordinate.longitude
-        var latDelta:CLLocationDegrees = 0.02
-        var lonDelta:CLLocationDegrees = 0.02
+        let latitude = userlocation.coordinate.latitude
+        let longitude = userlocation.coordinate.longitude
+        let latDelta:CLLocationDegrees = 0.02
+        let lonDelta:CLLocationDegrees = 0.02
         
-        var span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        var location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        var region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         
         self.map1.setRegion(region, animated: true)
         self.map1.showsUserLocation = true
         
         //this is for other users
-        var anno1 = MKPointAnnotation()
-        var anno2 = MKPointAnnotation()
-        var anno3 = MKPointAnnotation()
-        var anno4 = MKPointAnnotation()
-        var anno5 = MKPointAnnotation()
+        let anno1 = MKPointAnnotation()
+        let anno2 = MKPointAnnotation()
+        let anno3 = MKPointAnnotation()
+        let anno4 = MKPointAnnotation()
+        let anno5 = MKPointAnnotation()
         
         //check current userID for objectID
-        var userObjectID = userdic[user] as String!
-        println(userObjectID)
-        println("&&&&&&&&&&&&&&&&&&&&&")
+        let userObjectID = userdic[user] as String!
+        print(userObjectID)
+        print("&&&&&&&&&&&&&&&&&&&&&")
         
         
         //sending user location data to parse
@@ -121,12 +121,12 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                 }
                 else if let product = object
                 {
-                    var la = latitude
-                    var lo = longitude
+                    let la = latitude
+                    let lo = longitude
                     product["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                     product["latitude"] = la
                     product["longitude"] = lo
@@ -144,11 +144,11 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         tempuserdic[user] = nil
         
-        var query1 = PFQuery(className: "Locations")
-        var query2 = PFQuery(className: "Locations")
-        var query3 = PFQuery(className: "Locations")
-        var query4 = PFQuery(className: "Locations")
-        var query5 = PFQuery(className: "Locations")
+        let query1 = PFQuery(className: "Locations")
+        let query2 = PFQuery(className: "Locations")
+        let query3 = PFQuery(className: "Locations")
+        let query4 = PFQuery(className: "Locations")
+        let query5 = PFQuery(className: "Locations")
         
         // remove all annotation for renewal
         let annotationsToRemove = map1.annotations.filter { $0 !== self.map1.userLocation }
@@ -157,25 +157,25 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            var a1 = tempuserdic.keys.first!
-            var a2 = tempuserdic.values.first!
+            let a1 = tempuserdic.keys.first!
+            let a2 = tempuserdic.values.first!
             
             query1.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                 }
                 else if let product1 = object
                 {
                     
-                    var tbool = product1["sharing"] as! BooleanLiteralType
+                    let tbool = product1["sharing"] as! BooleanLiteralType
                     
                     if(tbool == true )
                     {
                         // this part is for test. Delete from here
-                        var la = latitude + 0.0005
-                        var lo = longitude + 0.005
+                        let la = latitude + 0.0005
+                        let lo = longitude + 0.005
                         product1["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                         product1["latitude"] = la
                         product1["longitude"] = lo
@@ -189,7 +189,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         let b = product1["longitude"] as! Double
                         let c = product1["uID"] as! String
                         
-                        var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
+                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         
                         anno1.coordinate = loc
@@ -207,7 +207,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
             })
             
             tempuserdic[a1] = nil
-            println(tempuserdic)
+            print(tempuserdic)
             
         }
         
@@ -217,28 +217,28 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            var a1 = tempuserdic.keys.first!
-            var a2 = tempuserdic.values.first!
-            println("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
+            let a1 = tempuserdic.keys.first!
+            let a2 = tempuserdic.values.first!
+            print("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
             
             
             query2.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                     
                 }
                 else if let product1 = object
                 {
                     
-                    var tbool = product1["sharing"] as! BooleanLiteralType
+                    let tbool = product1["sharing"] as! BooleanLiteralType
                     
                     if(tbool == true )
                     {
                         // this part is for test. Delete from here
-                        var la = latitude - 0.0005
-                        var lo = longitude + 0.005
+                        let la = latitude - 0.0005
+                        let lo = longitude + 0.005
                         product1["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                         product1["latitude"] = la
                         product1["longitude"] = lo
@@ -252,7 +252,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         let b = product1["longitude"] as! Double
                         let c = product1["uID"] as! String
                         
-                        var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
+                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         anno2.coordinate = loc
                         anno2.title = c
@@ -276,25 +276,25 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            var a1 = tempuserdic.keys.first!
-            var a2 = tempuserdic.values.first!
+            let a1 = tempuserdic.keys.first!
+            let a2 = tempuserdic.values.first!
             
             query3.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                 }
                 else if let product1 = object
                 {
                     
-                    var tbool = product1["sharing"] as! BooleanLiteralType
+                    let tbool = product1["sharing"] as! BooleanLiteralType
                     
                     if(tbool == true )
                     {
                         // this part is for test. Delete from here
-                        var la = latitude + 0.0005
-                        var lo = longitude - 0.005
+                        let la = latitude + 0.0005
+                        let lo = longitude - 0.005
                         product1["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                         product1["latitude"] = la
                         product1["longitude"] = lo
@@ -308,7 +308,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         let b = product1["longitude"] as! Double
                         let c = product1["uID"] as! String
                         
-                        var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
+                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         anno3.coordinate = loc
                         anno3.title = c
@@ -333,25 +333,25 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            var a1 = tempuserdic.keys.first!
-            var a2 = tempuserdic.values.first!
+            let a1 = tempuserdic.keys.first!
+            let a2 = tempuserdic.values.first!
             
             query4.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                 }
                 else if let product1 = object
                 {
                     
-                    var tbool = product1["sharing"] as! BooleanLiteralType
+                    let tbool = product1["sharing"] as! BooleanLiteralType
                     
                     if(tbool == true )
                     {
                         // this part is for test. Delete from here
-                        var la = latitude - 0.0005
-                        var lo = longitude - 0.005
+                        let la = latitude - 0.0005
+                        let lo = longitude - 0.005
                         product1["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                         product1["latitude"] = la
                         product1["longitude"] = lo
@@ -365,7 +365,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         let b = product1["longitude"] as! Double
                         let c = product1["uID"] as! String
                         
-                        var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
+                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         anno4.coordinate = loc
                         anno4.title = c
@@ -391,24 +391,24 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         if(tempuserdic.keys.first != nil && sharing)
         {
             var a1 = tempuserdic.keys.first!
-            var a2 = tempuserdic.values.first!
+            let a2 = tempuserdic.values.first!
             
             query5.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
-                    println(error)
+                    print(error)
                 }
                 else if let product1 = object
                 {
                     
-                    var tbool = product1["sharing"] as! BooleanLiteralType
+                    let tbool = product1["sharing"] as! BooleanLiteralType
                     
                     if(tbool == true )
                     {
                         // this part is for test. Delete from here
-                        var la = latitude - 0.0005
-                        var lo = longitude - 0.003
+                        let la = latitude - 0.0005
+                        let lo = longitude - 0.003
                         product1["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
                         product1["latitude"] = la
                         product1["longitude"] = lo
@@ -422,7 +422,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         let b = product1["longitude"] as! Double
                         let c = product1["uID"] as! String
                         
-                        var loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
+                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         anno5.coordinate = loc
                         anno5.title = c
