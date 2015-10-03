@@ -26,11 +26,11 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func viewWillAppear(animated: Bool) {
-        var context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
         
-        var request = NSFetchRequest(entityName: "Event")
+        let request = NSFetchRequest(entityName: "Event")
         
-        var results = context.executeFetchRequest(request, error: nil)
+        let results = try? context.executeFetchRequest(request)
         
         if results != nil {
             self.eventlist = results! as! [Event]
@@ -55,8 +55,8 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        var event = self.eventlist[indexPath.row]
+        let cell = UITableViewCell()
+        let event = self.eventlist[indexPath.row]
         cell.textLabel!.text = event.name
         cell.imageView!.image = UIImage(data: event.previewimage)
         return cell
@@ -75,7 +75,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "eventDetialSegue" {
-            var detailViewController = segue.destinationViewController as! EventDetailViewController
+            let detailViewController = segue.destinationViewController as! EventDetailViewController
             detailViewController.event = self.selectedEvent
         } 
     }

@@ -16,22 +16,22 @@ class LoginVC: UIViewController {
 	
 	//Login Button	
 	@IBAction func loginButton(sender: AnyObject) {
-		var loginEmail = self.loginEmailField.text
-		var loginPassword = self.loginPasswordField.text
+		let loginEmail = self.loginEmailField.text
+		let loginPassword = self.loginPasswordField.text
 		
 		
 		//TODO: verify email and password
-		if (loginEmail.isEmpty || loginPassword.isEmpty){
-			var incompleteLoginInfoAlert = UIAlertView(title: "Invalid", message: "Please enter your email address and password", delegate: self, cancelButtonTitle: "OK")
+		if (loginEmail!.isEmpty || loginPassword!.isEmpty){
+			let incompleteLoginInfoAlert = UIAlertView(title: "Invalid", message: "Please enter your email address and password", delegate: self, cancelButtonTitle: "OK")
 			incompleteLoginInfoAlert.show()
 		} else { //email and password verified
-			PFUser.logInWithUsernameInBackground(loginEmail, password: loginPassword, block: {(user, error) -> Void in
+			PFUser.logInWithUsernameInBackground(loginEmail!, password: loginPassword!, block: {(user, error) -> Void in
 			//if inside this block, request was successful
 				if ((user) != nil){
-					println("User logged in through Parse \(user)")
+					print("User logged in through Parse \(user)")
 					self.performSegueWithIdentifier("loginSegue", sender: self)
 				} else {
-					println("User failed to login")
+					print("User failed to login")
 				}
 			})
 		}

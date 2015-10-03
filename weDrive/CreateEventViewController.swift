@@ -34,10 +34,10 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var coverTapRecognizer = UITapGestureRecognizer(target: self, action: "coverTapped")
+        let coverTapRecognizer = UITapGestureRecognizer(target: self, action: "coverTapped")
         self.coverImage.addGestureRecognizer(coverTapRecognizer)
         
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
@@ -84,7 +84,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
     func launchGallery(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
-            var photoViewController = UIImagePickerController()
+            let photoViewController = UIImagePickerController()
             photoViewController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             photoViewController.delegate = self
             self.presentViewController(photoViewController, animated: true, completion: nil)
@@ -101,25 +101,28 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
     }
     @IBAction func saveTapped(sender: AnyObject) {
-        var context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-        var event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-        event.name = self.nameTextField.text
+        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+        let event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+        event.name = self.nameTextField.text!
         event.people = self.people
-        event.from = self.fromTextField.text
-        event.to = self.toTextField.text
-        event.note = self.noteTextField.text
-        event.previewimage = UIImageJPEGRepresentation(self.coverImage.image,1)
+        event.from = self.fromTextField.text!
+        event.to = self.toTextField.text!
+        event.note = self.noteTextField.text!
+        event.previewimage = UIImageJPEGRepresentation(self.coverImage.image!,1)!
         //event.time = selectedDate
-        event.time = self.timeTextField.text
-        context.save(nil)
-        var TestObject = PFObject(className: "Events")
+        event.time = self.timeTextField.text!
+        do {
+            try context.save()
+        } catch _ {
+        }
+        let TestObject = PFObject(className: "Events")
         TestObject["eventName"] = event.name
         TestObject["startPoint"] = event.from
         TestObject["endPoint"] = event.to
         TestObject["participants"] = event.people
         
         
-        TestObject.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in println("object saved")}
+        TestObject.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("object saved")}
         
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
     }
@@ -131,11 +134,11 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "contactListSegue" {
-            var contactListViewController = segue.destinationViewController as! ContactListViewController
-            contactListViewController.name = self.nameTextField.text
-            contactListViewController.from = self.fromTextField.text
-            contactListViewController.to = self.toTextField.text
-            contactListViewController.note = self.noteTextField.text
+            let contactListViewController = segue.destinationViewController as! ContactListViewController
+            contactListViewController.name = self.nameTextField.text!
+            contactListViewController.from = self.fromTextField.text!
+            contactListViewController.to = self.toTextField.text!
+            contactListViewController.note = self.noteTextField.text!
         }
     }
     //@IBOutlet weak var DatePicker: UIDatePicker!

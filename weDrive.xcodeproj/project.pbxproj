@@ -201,30 +201,7 @@
 		6992712A1B5E603000660E95 = {
 			isa = PBXGroup;
 			children = (
-				E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */,
-				E5F4A7241B88A4D100F46ED6 /* FBSDKLoginKit.framework */,
-				0A0FF4411B733D0D006798F5 /* Accounts.framework */,
-				0A0FF43F1B733CB9006798F5 /* Social.framework */,
-				0A0FF4331B71AF5A006798F5 /* AVFoundation.framework */,
-				0A0FF4311B71AF4F006798F5 /* CoreData.framework */,
-				0A0FF42F1B71AF3D006798F5 /* CoreText.framework */,
-				0A0FF42D1B71AF35006798F5 /* GLKit.framework */,
-				0A0FF42B1B71AF2B006798F5 /* ImageIO.framework */,
-				0A0FF4291B71AF20006798F5 /* libc++.dylib */,
-				0A0FF4271B71AF02006798F5 /* libicucore.dylib */,
-				0A0FF4251B71AED4006798F5 /* OpenGLES.framework */,
-				0A0FF4161B71AE18006798F5 /* AudioToolbox.framework */,
-				0A0FF4141B71AE0B006798F5 /* Foundation.framework */,
-				0A0FF4121B71AE00006798F5 /* CoreGraphics.framework */,
-				0A0FF4101B71ADF9006798F5 /* CoreLocation.framework */,
-				0A0FF40E1B71ADF1006798F5 /* libz.dylib */,
-				0A0FF40C1B71ADE9006798F5 /* MobileCoreServices.framework */,
-				0A0FF40A1B71ADDC006798F5 /* QuartzCore.framework */,
-				0A0FF4081B71ADD3006798F5 /* Security.framework */,
-				0A0FF4061B71ADCA006798F5 /* StoreKit.framework */,
-				0A0FF4041B71ADC1006798F5 /* SystemConfiguration.framework */,
-				0A0FF4021B71ADB9006798F5 /* CFNetwork.framework */,
-				0A0FF4001B71ADB0006798F5 /* libsqlite3.dylib */,
+				DFC51CD61BBF7C9600A3AE2B /* Frameworks */,
 				0A0FF4351B71B07F006798F5 /* Google Maps SDK */,
 				699271351B5E603000660E95 /* weDrive */,
 				6992714E1B5E603000660E95 /* weDriveTests */,
@@ -295,6 +272,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DFC51CD61BBF7C9600A3AE2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A0FF4001B71ADB0006798F5 /* libsqlite3.dylib */,
+				E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */,
+				E5F4A7241B88A4D100F46ED6 /* FBSDKLoginKit.framework */,
+				0A0FF4411B733D0D006798F5 /* Accounts.framework */,
+				0A0FF43F1B733CB9006798F5 /* Social.framework */,
+				0A0FF4331B71AF5A006798F5 /* AVFoundation.framework */,
+				0A0FF4311B71AF4F006798F5 /* CoreData.framework */,
+				0A0FF42F1B71AF3D006798F5 /* CoreText.framework */,
+				0A0FF42D1B71AF35006798F5 /* GLKit.framework */,
+				0A0FF42B1B71AF2B006798F5 /* ImageIO.framework */,
+				0A0FF4291B71AF20006798F5 /* libc++.dylib */,
+				0A0FF4271B71AF02006798F5 /* libicucore.dylib */,
+				0A0FF4251B71AED4006798F5 /* OpenGLES.framework */,
+				0A0FF4161B71AE18006798F5 /* AudioToolbox.framework */,
+				0A0FF4141B71AE0B006798F5 /* Foundation.framework */,
+				0A0FF4121B71AE00006798F5 /* CoreGraphics.framework */,
+				0A0FF4101B71ADF9006798F5 /* CoreLocation.framework */,
+				0A0FF40E1B71ADF1006798F5 /* libz.dylib */,
+				0A0FF40C1B71ADE9006798F5 /* MobileCoreServices.framework */,
+				0A0FF40A1B71ADDC006798F5 /* QuartzCore.framework */,
+				0A0FF4081B71ADD3006798F5 /* Security.framework */,
+				0A0FF4061B71ADCA006798F5 /* StoreKit.framework */,
+				0A0FF4041B71ADC1006798F5 /* SystemConfiguration.framework */,
+				0A0FF4021B71ADB9006798F5 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,7 +347,9 @@
 		6992712B1B5E603000660E95 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = michelle;
 				TargetAttributes = {
 					699271321B5E603000660E95 = {
@@ -474,6 +484,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -551,6 +562,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ShumanLiu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "weDrive-Bridging-Header.h";
@@ -578,6 +590,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ShumanLiu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "weDrive-Bridging-Header.h";
@@ -598,6 +611,7 @@
 				);
 				INFOPLIST_FILE = weDriveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ShumanLiu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weDrive.app/weDrive";
 			};
@@ -613,6 +627,7 @@
 				);
 				INFOPLIST_FILE = weDriveTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ShumanLiu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/weDrive.app/weDrive";
 			};

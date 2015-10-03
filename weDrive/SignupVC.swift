@@ -22,13 +22,13 @@ class SignupVC: UIViewController{
 	//TODO: check repeat password is same as password
 	
 	@IBAction func creationAccountButton(sender: AnyObject) {
-		var signupFirstname = signupFirstnameField.text
-		var signupLastname = signupLastnameField.text
+		let signupFirstname = signupFirstnameField.text
+		let signupLastname = signupLastnameField.text
 		
-		var signupEmail = signupEmailField.text
-		var signupPassword = signupPasswordField.text
+		let signupEmail = signupEmailField.text
+		let signupPassword = signupPasswordField.text
 		
-		var newUser=PFUser()
+		let newUser=PFUser()
 		newUser.username = signupEmail //NOTE: use email as username
 		newUser["firstName"]=signupFirstname
 		newUser["lastName"]=signupLastname
@@ -36,10 +36,10 @@ class SignupVC: UIViewController{
 		newUser.email = signupEmail
 		newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
 			if(error != nil){
-				var incompleteSignupInfoAlert = UIAlertView(title: "Invalid", message: "Please complete all fields", delegate: self, cancelButtonTitle: "OK")
+				let incompleteSignupInfoAlert = UIAlertView(title: "Invalid", message: "Please complete all fields", delegate: self, cancelButtonTitle: "OK")
 				incompleteSignupInfoAlert.show()
 			} else { //user created
-				println("User successfully signed up through Parse! \(newUser)")
+				print("User successfully signed up through Parse! \(newUser)")
 				self.performSegueWithIdentifier("signupLoginSegue", sender: self)
 			}
 		})

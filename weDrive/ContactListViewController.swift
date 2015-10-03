@@ -52,7 +52,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
         let rightButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "doneTapped:")
         navigationItem.rightBarButtonItem = rightButton
         
-        var que = PFQuery(className: "User")
+        let que = PFQuery(className: "User")
         que.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
@@ -66,7 +66,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
                 }
                 
             } else {
-                println("\(error)")
+                print("\(error)")
             }
         }
     }
@@ -83,7 +83,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
         
         cell.textLabel?.text = people[indexPath.row]
         return cell
@@ -103,7 +103,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "peopleAddedSegue" {
-            var eventCreateViewController = segue.destinationViewController as! CreateEventViewController
+            let eventCreateViewController = segue.destinationViewController as! CreateEventViewController
             eventCreateViewController.people = self.selectedPeople
             eventCreateViewController.name = self.name
             eventCreateViewController.note = self.note
@@ -112,7 +112,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
             
         }
         if segue.identifier == "contactCancelSegue" {
-            var eventCreateViewController = segue.destinationViewController as! CreateEventViewController
+            let eventCreateViewController = segue.destinationViewController as! CreateEventViewController
             eventCreateViewController.people = self.selectedPeople
             eventCreateViewController.name = self.name
             eventCreateViewController.note = self.note
