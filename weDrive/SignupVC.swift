@@ -21,6 +21,11 @@ class SignupVC: UIViewController{
 	@IBOutlet weak var signupRepeatPasswordField: UITextField!
 	//TODO: check repeat password is same as password
 	
+	//Dismiss keyboard on clicking elsewhere
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
+	}
+	
 	@IBAction func creationAccountButton(sender: AnyObject) {
 		let signupFirstname = signupFirstnameField.text
 		let signupLastname = signupLastnameField.text

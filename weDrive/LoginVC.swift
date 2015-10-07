@@ -9,10 +9,16 @@
 import UIKit
 //import Parse
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 	/*********** Basic login ***********/
 	@IBOutlet weak var loginEmailField: UITextField!
 	@IBOutlet weak var loginPasswordField: UITextField!
+	
+	
+	//Dismiss keyboard on clicking elsewhere
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
+	}
 	
 	//Login Button	
 	@IBAction func loginButton(sender: AnyObject) {
