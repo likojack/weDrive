@@ -9,17 +9,33 @@
 import UIKit
 //import Parse
 
-class LoginVC: UIViewController, UITextFieldDelegate {
+class LoginVC: UIViewController, UITextFieldDelegate{
+	
 	/*********** Basic login ***********/
+	
+	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var loginEmailField: UITextField!
 	@IBOutlet weak var loginPasswordField: UITextField!
 	
-	
-	//Dismiss keyboard on clicking elsewhere
-	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		self.view.endEditing(true)
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		self.scrollView.addGestureRecognizer(tap)
 	}
 	
+	func dismissKeyboard(){ //hide keyboard on tapping anywhere
+		view.endEditing(true)
+	}
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder() //hide keyboard on return
+		return true
+	}
+	func textFieldDidBeginEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, 60), animated: true) //250 is size of keyboard
+	}
+	func textFieldDidEndEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, -75), animated: true) //250 is size of keyboard
+	}
 	//Login Button	
 	@IBAction func loginButton(sender: AnyObject) {
 		let loginEmail = self.loginEmailField.text

@@ -11,13 +11,9 @@ import UIKit
 class SignupVC: UIViewController{
 	
 	@IBOutlet weak var signupFirstnameField: UITextField!
-	
 	@IBOutlet weak var signupLastnameField: UITextField!
-	
 	@IBOutlet weak var signupEmailField: UITextField!
-	
 	@IBOutlet weak var signupPasswordField: UITextField!
-	
 	@IBOutlet weak var signupRepeatPasswordField: UITextField!
 	//TODO: check repeat password is same as password
 	
