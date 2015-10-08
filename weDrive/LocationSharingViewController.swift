@@ -48,7 +48,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     @IBOutlet weak var map1: MKMapView!
     
     func builddic(groupname: String) {
-        var query = PFQuery(className: "Locations")
+        let query = PFQuery(className: "Locations")
         query.whereKey("groupname", equalTo:gname )
         
         query.findObjectsInBackgroundWithBlock {
@@ -390,7 +390,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         if(tempuserdic.keys.first != nil && sharing)
         {
-            var a1 = tempuserdic.keys.first!
+            _ = tempuserdic.keys.first!
             let a2 = tempuserdic.values.first!
             
             query5.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
