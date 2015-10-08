@@ -32,8 +32,6 @@
 		0A0FF4301B71AF3D006798F5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF42F1B71AF3D006798F5 /* CoreText.framework */; };
 		0A0FF4321B71AF4F006798F5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4311B71AF4F006798F5 /* CoreData.framework */; };
 		0A0FF4341B71AF5A006798F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4331B71AF5A006798F5 /* AVFoundation.framework */; };
-		0A0FF4381B71B09E006798F5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A0FF4361B71B09E006798F5 /* GoogleMaps.bundle */; };
-		0A0FF4391B71B09E006798F5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4371B71B09E006798F5 /* GoogleMaps.framework */; };
 		0A0FF43C1B71B2B6006798F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0FF43B1B71B2B6006798F5 /* MapViewController.swift */; };
 		0A0FF4401B733CB9006798F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF43F1B733CB9006798F5 /* Social.framework */; };
 		0A0FF4421B733D0D006798F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FF4411B733D0D006798F5 /* Accounts.framework */; };
@@ -53,10 +51,10 @@
 		69F541231B70FD5C00FC111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F541211B70FD5C00FC111C /* Main.storyboard */; };
 		DFC51CD81BBF8A2900A3AE2B /* resultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC51CD71BBF8A2900A3AE2B /* resultsCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E54D17781BA298F80036A0DC /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */; };
+		E5BBC1E41BC65E0900671570 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BBC1E21BC65E0900671570 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		E5BBC1E51BC65E0900671570 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BBC1E31BC65E0900671570 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		E5F4A71B1B8893EA00F46ED6 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A7191B8893EA00F46ED6 /* SignupVC.swift */; };
 		E5F4A71C1B8893EA00F46ED6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F4A71A1B8893EA00F46ED6 /* LoginVC.swift */; };
-		E5F4A7251B88A4D100F46ED6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */; };
-		E5F4A7261B88A4D100F46ED6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F4A7241B88A4D100F46ED6 /* FBSDKLoginKit.framework */; };
 		E5F4A72A1B88A9F100F46ED6 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F4A7291B88A9F100F46ED6 /* ParseFacebookUtilsV4.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,8 +94,6 @@
 		0A0FF42F1B71AF3D006798F5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0A0FF4311B71AF4F006798F5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0A0FF4331B71AF5A006798F5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		0A0FF4361B71B09E006798F5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
-		0A0FF4371B71B09E006798F5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		0A0FF43B1B71B2B6006798F5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0A0FF43F1B733CB9006798F5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0A0FF4411B733D0D006798F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -121,10 +117,10 @@
 		69F541221B70FD5C00FC111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFC51CD71BBF8A2900A3AE2B /* resultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resultsCell.swift; sourceTree = "<group>"; };
 		E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
+		E5BBC1E21BC65E0900671570 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "weDrive/FacebookSDKs-iOS-20151007/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		E5BBC1E31BC65E0900671570 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "weDrive/FacebookSDKs-iOS-20151007/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		E5F4A7191B8893EA00F46ED6 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		E5F4A71A1B8893EA00F46ED6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = weDrive/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		E5F4A7241B88A4D100F46ED6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = weDrive/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		E5F4A7291B88A9F100F46ED6 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		E5F4A72B1B88ABF600F46ED6 /* weDrive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weDrive-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,8 +132,8 @@
 			files = (
 				0A0FF4421B733D0D006798F5 /* Accounts.framework in Frameworks */,
 				0A0FF4401B733CB9006798F5 /* Social.framework in Frameworks */,
-				E5F4A7261B88A4D100F46ED6 /* FBSDKLoginKit.framework in Frameworks */,
-				E5F4A7251B88A4D100F46ED6 /* FBSDKCoreKit.framework in Frameworks */,
+				E5BBC1E51BC65E0900671570 /* FBSDKLoginKit.framework in Frameworks */,
+				E5BBC1E41BC65E0900671570 /* FBSDKCoreKit.framework in Frameworks */,
 				0A0FF4341B71AF5A006798F5 /* AVFoundation.framework in Frameworks */,
 				0A0FF4321B71AF4F006798F5 /* CoreData.framework in Frameworks */,
 				0A0FF4301B71AF3D006798F5 /* CoreText.framework in Frameworks */,
@@ -154,7 +150,6 @@
 				0A0FF4151B71AE0B006798F5 /* Foundation.framework in Frameworks */,
 				0A0FF4131B71AE00006798F5 /* CoreGraphics.framework in Frameworks */,
 				0A0FF4111B71ADF9006798F5 /* CoreLocation.framework in Frameworks */,
-				0A0FF4391B71B09E006798F5 /* GoogleMaps.framework in Frameworks */,
 				0A0FF40F1B71ADF1006798F5 /* libz.dylib in Frameworks */,
 				0A0FF40D1B71ADE9006798F5 /* MobileCoreServices.framework in Frameworks */,
 				0A0FF40B1B71ADDC006798F5 /* QuartzCore.framework in Frameworks */,
@@ -187,15 +182,6 @@
 				0A0FF41E1B71AE30006798F5 /* ParseUI.framework */,
 			);
 			path = "parse-library-1.7.5-2";
-			sourceTree = "<group>";
-		};
-		0A0FF4351B71B07F006798F5 /* Google Maps SDK */ = {
-			isa = PBXGroup;
-			children = (
-				0A0FF4361B71B09E006798F5 /* GoogleMaps.bundle */,
-				0A0FF4371B71B09E006798F5 /* GoogleMaps.framework */,
-			);
-			name = "Google Maps SDK";
 			sourceTree = "<group>";
 		};
 		6992712A1B5E603000660E95 = {
@@ -274,10 +260,9 @@
 		DFC51CD61BBF7C9600A3AE2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A0FF4351B71B07F006798F5 /* Google Maps SDK */,
+				E5BBC1E21BC65E0900671570 /* FBSDKCoreKit.framework */,
+				E5BBC1E31BC65E0900671570 /* FBSDKLoginKit.framework */,
 				0A0FF4001B71ADB0006798F5 /* libsqlite3.dylib */,
-				E5F4A7231B88A4D100F46ED6 /* FBSDKCoreKit.framework */,
-				E5F4A7241B88A4D100F46ED6 /* FBSDKLoginKit.framework */,
 				0A0FF4411B733D0D006798F5 /* Accounts.framework */,
 				0A0FF43F1B733CB9006798F5 /* Social.framework */,
 				0A0FF4331B71AF5A006798F5 /* AVFoundation.framework */,
@@ -388,7 +373,6 @@
 			files = (
 				69F541231B70FD5C00FC111C /* Main.storyboard in Resources */,
 				699271461B5E603000660E95 /* LaunchScreen.xib in Resources */,
-				0A0FF4381B71B09E006798F5 /* GoogleMaps.bundle in Resources */,
 				699271431B5E603000660E95 /* Images.xcassets in Resources */,
 				699271641B5E99B900660E95 /* default.jpg in Resources */,
 			);
@@ -549,12 +533,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/weDrive",
 					"$(PROJECT_DIR)/weDrive/parse-library-1.7.5-2",
 					"$(PROJECT_DIR)/weDrive/FacebookSDK",
+					"$(PROJECT_DIR)/weDrive/FacebookSDKs-iOS-20151007",
 				);
 				INFOPLIST_FILE = weDrive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -577,12 +563,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/weDrive",
 					"$(PROJECT_DIR)/weDrive/parse-library-1.7.5-2",
 					"$(PROJECT_DIR)/weDrive/FacebookSDK",
+					"$(PROJECT_DIR)/weDrive/FacebookSDKs-iOS-20151007",
 				);
 				INFOPLIST_FILE = weDrive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

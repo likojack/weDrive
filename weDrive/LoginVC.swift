@@ -66,7 +66,7 @@ class LoginVC: UIViewController, UITextFieldDelegate{
 	
 	/*********** Login with Facebook ***********/
 	let permissions = ["public_profile", "email", "user_friends"]
-
+	
 	@IBAction func faceBookLoginButton(sender: UIButton) {
 		PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {(user:PFUser?, error: NSError?) -> Void in
 			if user == nil { NSLog("User cancelled the Facebook login.") }
