@@ -110,7 +110,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         //check current userID for objectID
         let userObjectID = userdic[user] as String!
-        print(userObjectID)
+        //print(userObjectID)
         print("&&&&&&&&&&&&&&&&&&&&&")
         
         

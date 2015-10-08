@@ -11,9 +11,6 @@ import UIKit
 class EventDetailViewController: UIViewController {
 
     var event : Event? = nil
-    var tappedImage : UIImage? = nil
-    
-    @IBOutlet weak var previewImageView: UIImageView!
     
     @IBOutlet weak var peopleLabel: UILabel!
     
@@ -37,7 +34,6 @@ class EventDetailViewController: UIViewController {
         
         
         self.navigationItem.title = self.event!.name
-        self.previewImageView.image = UIImage(data: self.event!.previewimage)
         self.eventLabel.text = self.event?.name
         self.fromLabel.text = self.event!.from
         self.toLabel.text = self.event!.to
@@ -45,15 +41,9 @@ class EventDetailViewController: UIViewController {
         self.noteLabel.text = self.event!.note
         self.timeLabel.text = self.event?.time
         
-        let previewTapRecognizer = UITapGestureRecognizer(target: self, action: "previewTapped")
-        self.previewImageView.addGestureRecognizer(previewTapRecognizer)
         
     }
     
-    func previewTapped() {
-        self.tappedImage = self.previewImageView.image
-        self.performSegueWithIdentifier("zoomSegue", sender: self)
-    }
     
     @IBAction func StartTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("ToLocationSharing", sender: self)
@@ -63,10 +53,6 @@ class EventDetailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "zoomSegue" {
-            let zoomViewController = segue.destinationViewController as! ZoomViewController
-            zoomViewController.image = self.tappedImage!
-        }
         
         if segue.identifier == "ToLocationSharing" {
             let locationViewController = segue.destinationViewController as! LocationSharingViewController

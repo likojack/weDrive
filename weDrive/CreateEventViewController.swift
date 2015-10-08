@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class CreateEventViewController: UIViewController,UINavigationControllerDelegate{
 
     
     @IBOutlet weak var coverImage: UIImageView!
@@ -34,8 +34,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let coverTapRecognizer = UITapGestureRecognizer(target: self, action: "coverTapped")
-        self.coverImage.addGestureRecognizer(coverTapRecognizer)
+
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -80,24 +79,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    func coverTapped() {
-       launchGallery()
-    }
-    
-    func launchGallery(){
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary){
-            let photoViewController = UIImagePickerController()
-            photoViewController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            photoViewController.delegate = self
-            self.presentViewController(photoViewController, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        self.coverImage.image = image
-        picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-   
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
@@ -110,8 +91,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         event.from = self.fromTextField.text!
         event.to = self.toTextField.text!
         event.note = self.noteTextField.text!
-        event.previewimage = UIImageJPEGRepresentation(self.coverImage.image!,1)!
-        //event.time = selectedDate
+               //event.time = selectedDate
         event.time = self.timeTextField.text!
         do {
             try context.save()
