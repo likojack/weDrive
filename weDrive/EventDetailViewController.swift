@@ -47,7 +47,6 @@ class EventDetailViewController: UIViewController {
     
     @IBAction func StartTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("ToLocationSharing", sender: self)
-        print("!!!")
     }
     
     
