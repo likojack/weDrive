@@ -61,7 +61,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 print("Successfully retrieved ")
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
-                    //for object in objects{
+//                    for object in objects{
                     let start_la : Double = objects[0]["start_la"] as! Double!
                     let start_lo : Double = objects[0]["start_long"] as! Double!
                     let end_la : Double = objects[0]["end_la"] as! Double!
@@ -108,16 +108,14 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                     self.locationManager.startUpdatingLocation()
                     self.locationManager.requestWhenInUseAuthorization()
-                    
-                    
                     //}
                 }
-            } else {
+            }else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
             }
-        }
         
+    }
         //map initiate
         
         
@@ -164,48 +162,48 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
     }
     
-    func coordstart()
-    {
-        let query = PFQuery(className: "Events")
-        query.whereKey("eventName", equalTo:gname )
-        
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved!!!!!!! ")
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        let start_la : Double = object["start_la"] as! Double!
-                        let start_lo : Double = object["start_long"] as! Double!
-                        let end_la : Double = object["end_la"] as! Double!
-                        let end_lo : Double = object["end_long"] as! Double!
-                        self.coords_start.latitude = start_la
-                        self.coords_dest.latitude = end_la
-                        self.coords_start.longitude = start_lo
-                        self.coords_start.longitude = end_lo
-                        self.startp.coordinate = self.coords_start
-                        self.destp.coordinate = self.coords_dest
-                        
-                        print("@@@@@@@@")
-                        print(self.coords_start)
-                        print(self.coords_dest)
-                        print("@@@@@@@@@@")
-                    }
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-        //print("!!!!!!!!")
-        //print(startp)
-        //print(destp)
-        //print("!!!!!!")
-        
-    }
+//    func coordstart()
+//    {
+//        let query = PFQuery(className: "Events")
+//        query.whereKey("eventName", equalTo:gname )
+//        
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]?, error: NSError?) -> Void in
+//            
+//            if error == nil {
+//                // The find succeeded.
+//                print("Successfully retrieved!!!!!!! ")
+//                // Do something with the found objects
+//                if let objects = objects as? [PFObject] {
+//                    for object in objects {
+//                        let start_la : Double = object["start_la"] as! Double!
+//                        let start_lo : Double = object["start_long"] as! Double!
+//                        let end_la : Double = object["end_la"] as! Double!
+//                        let end_lo : Double = object["end_long"] as! Double!
+//                        self.coords_start.latitude = start_la
+//                        self.coords_dest.latitude = end_la
+//                        self.coords_start.longitude = start_lo
+//                        self.coords_start.longitude = end_lo
+//                        self.startp.coordinate = self.coords_start
+//                        self.destp.coordinate = self.coords_dest
+//                        
+//                        print("@@@@@@@@")
+//                        print(self.coords_start)
+//                        print(self.coords_dest)
+//                        print("@@@@@@@@@@")
+//                    }
+//                }
+//            } else {
+//                // Log details of the failure
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+//        //print("!!!!!!!!")
+//        //print(startp)
+//        //print(destp)
+//        //print("!!!!!!")
+//        
+//    }
     
     
     override func didReceiveMemoryWarning() {

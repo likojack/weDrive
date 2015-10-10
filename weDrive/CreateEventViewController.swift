@@ -103,6 +103,63 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         TestObject["endPoint"] = event.to
         TestObject["participants"] = event.people
         
+        for i in event.people {
+            let object_location = PFObject(className: "Locations")
+            object_location["uID"] = i
+            object_location["groupname"] = event.name
+            let query = PFQuery(className: "_User")
+            query.whereKey("username", equalTo:i )
+            
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    // The find succeeded.
+                    print("Successfully retrieved ")
+                }
+                    // Do something with the found objects
+                    if let objects = objects as? [PFObject] {
+                        let latitude = objects[0]["latitude"]
+                        let longitude = objects[0]["longitude"]
+                        object_location["latitude"] = latitude
+                        object_location["longitude"] = longitude
+                        object_location["sharing"] = true
+                        object_location.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("location object saved")}
+                
+                    } else {
+                    // Log details of the failure
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+        
+        }
+        let user_location = PFObject(className: "Locations")
+        user_location["uID"] = PFUser.currentUser()!.username!
+        user_location["groupname"] = event.name
+        let query = PFQuery(className: "_User")
+        query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved ")
+            }
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    let latitude = objects[0]["latitude"]
+                    let longitude = objects[0]["longitude"]
+                    user_location["latitude"] = latitude
+                    user_location["longitude"] = longitude
+                    user_location["sharing"] = true
+                    user_location.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("location object saved")}
+                
+                } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+        
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(event.from, completionHandler: {(placemarks, error) -> Void in
