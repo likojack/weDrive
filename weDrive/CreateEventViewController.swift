@@ -103,8 +103,35 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         TestObject["endPoint"] = event.to
         TestObject["participants"] = event.people
         
+        let geocoder = CLGeocoder()
         
-        TestObject.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("object saved")}
+        geocoder.geocodeAddressString(event.from, completionHandler: {(placemarks, error) -> Void in
+            if((error) != nil){
+                print("Error", error)
+            }
+            if let placemark_start = placemarks?.first {
+                let coordinates_start:CLLocationCoordinate2D = placemark_start.location!.coordinate
+                
+                let geocoder_end = CLGeocoder()
+                
+                geocoder_end.geocodeAddressString(event.to, completionHandler: {(placemarks, error) -> Void in
+                    if((error) != nil){
+                        print("Error", error)
+                    }
+                    if let placemark_end = placemarks?.first {
+                        let coordinates_end:CLLocationCoordinate2D = placemark_end.location!.coordinate
+                        
+                        TestObject["start_long"] = coordinates_start.longitude
+                        TestObject["start_la"] = coordinates_start.latitude
+                        TestObject["end_long"] = coordinates_end.longitude
+                        TestObject["end_la"] = coordinates_end.latitude
+                        TestObject.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("object saved")}
+                        
+                    }
+                })
+                
+            }
+        })
         
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
     }
