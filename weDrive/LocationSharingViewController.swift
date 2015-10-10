@@ -229,9 +229,9 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //println(object["uID"])
                         let temp : String = object.objectId!
                         let temp2 : String = object["uID"]! as! String
-                        print("********")
+//                        print("********")
                         self.userdic[temp2] = temp
-                        print(self.userdic)
+//                        print(self.userdic)
                         
                         self.notemptyDictionary = true
                         
@@ -247,14 +247,15 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     
     @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // println(locations)
-        // print("*********************////////////////")
         
         
         // this is for map and user location
         let query = PFQuery(className: "Locations")
         
         let userlocation: CLLocation = locations[0]
+        print("@@@@@@@@@@@@")
+        print(locations)
+        print("@@@@@@@@@@@@")
         
         let latitude = userlocation.coordinate.latitude
         let longitude = userlocation.coordinate.longitude

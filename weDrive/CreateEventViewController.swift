@@ -190,6 +190,14 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
             }
         })
         
+        
+        
+        
+        
+        
+        
+        
+        
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
     }
     

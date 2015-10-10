@@ -32,23 +32,37 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
         
         let results = try? context.executeFetchRequest(request)
         
+        //insert invited event to event management list
+        let query = PFQuery(className: "events")
+        query.whereKey("participants", containedIn: [PFUser.currentUser()!.username!])
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved ")
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        let invited_event : Event? = nil
+                        invited_event!.name = object["eventName"] as! String
+                        invited_event!.from = object["startPoint"] as! String
+                        invited_event!.to = object["endPoint"] as! String
+                        invited_event!.people = object["participants"] as! [String]
+                        self.eventlist.append(invited_event!)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+    
+        //until here
         if results != nil {
             self.eventlist = results! as! [Event]
         }
     }
-    
-//    func createEvent(){
-//        var context = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext!
-//        
-//        var event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as Event
-//        
-//        event.name = "Picnic On Sunday!"
-//        event.from = "anu"
-//        event.people = "ahsjdh"
-//        event.previewimage = UIImageJPEGRepresentation(UIImage(named:"Tidbinbilla.jpg"), 1)
-//        
-//        context.save(nil)
-//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.eventlist.count
