@@ -26,42 +26,45 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func viewWillAppear(animated: Bool) {
-        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-        
-        let request = NSFetchRequest(entityName: "Event")
-        
-        let results = try? context.executeFetchRequest(request)
-        
         //insert invited event to event management list
-        let query = PFQuery(className: "events")
+        let query = PFQuery(className: "Events")
         query.whereKey("participants", containedIn: [PFUser.currentUser()!.username!])
         
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved ")
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        let invited_event : Event? = nil
-                        invited_event!.name = object["eventName"] as! String
-                        invited_event!.from = object["startPoint"] as! String
-                        invited_event!.to = object["endPoint"] as! String
-                        invited_event!.people = object["participants"] as! [String]
-                        self.eventlist.append(invited_event!)
+                    
+                    let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+                    
+                    let request = NSFetchRequest(entityName: "Event")
+                    
+                    let results = try? context.executeFetchRequest(request)
+                    
+                    if results != nil {
+                        self.eventlist = results! as! [Event]
                     }
+                    for object in objects {
+                        let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
+                        let invited_event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                        print(object["eventName"] as! String)
+                        invited_event.name = object["eventName"] as! String
+                        invited_event.from = object["startPoint"] as! String
+                        invited_event.to = object["endPoint"] as! String
+                        invited_event.people = object["participants"] as! [String]
+                        self.eventlist.append(invited_event)
+                    }
+                    self.eventListTableView.reloadData()
+                    
                 }
             } else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
-    
         //until here
-        if results != nil {
-            self.eventlist = results! as! [Event]
-        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,9 +73,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let event = self.eventlist[indexPath.row]
-        cell.textLabel!.text = event.name
-        cell.imageView!.image = UIImage(data: event.previewimage)
+        cell.textLabel!.text = self.eventlist[indexPath.row].name
         return cell
     }
     
