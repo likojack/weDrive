@@ -24,6 +24,22 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
         self.eventListTableView.delegate = self
         
     }
+    func removeDuplicates(array: [Event]) -> [Event] {
+        var encountered = Set<Event>()
+        var result: [Event] = []
+        for value in array {
+            if encountered.contains(value) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
+    }
     
     override func viewWillAppear(animated: Bool) {
         //insert invited event to event management list
@@ -56,6 +72,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
                         invited_event.people = object["participants"] as! [String]
                         self.eventlist.append(invited_event)
                     }
+                    self.eventlist = self.removeDuplicates(self.eventlist)
                     self.eventListTableView.reloadData()
                     
                 }
