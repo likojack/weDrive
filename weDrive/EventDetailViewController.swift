@@ -47,10 +47,12 @@ class EventDetailViewController: UIViewController {
             self.timeLabel.text = self.event?.time
         }
         else {
+            
             var printPeople : String = ""
             for var i = 0; i < self.event?.people.count; i++ {
                 printPeople = printPeople + " " + self.people[i]
             }
+            
             self.navigationItem.title = self.name
             self.eventLabel.text = self.name
             self.fromLabel.text = self.from
@@ -58,26 +60,21 @@ class EventDetailViewController: UIViewController {
             self.peopleLabel.text = printPeople
             self.noteLabel.text = self.note
             self.timeLabel.text = self.time
+            
+            self.event?.name = self.name
+            self.event?.from = self.from
+            self.event?.to = self.to
+            self.event?.people = self.people
+            self.event?.note = self.note
+            self.event?.time = self.time
+
+            
+            
         }
 
         
         
     }
-//    override func viewWillAppear(animated: Bool) {
-//        var printPeople : String = ""
-//        for var i = 0; i < self.event?.people.count; i++ {
-//            printPeople = printPeople + " " + self.event!.people[i]
-//        }
-//        
-//        
-//        self.navigationItem.title = self.event?.name
-//        self.eventLabel.text = self.event?.name
-//        self.fromLabel.text = self.event?.from
-//        self.toLabel.text = self.event?.to
-//        self.peopleLabel.text = printPeople
-//        self.noteLabel.text = self.event?.note
-//        self.timeLabel.text = self.event?.time
-//    }
     
     
     @IBAction func StartTapped(sender: AnyObject) {
