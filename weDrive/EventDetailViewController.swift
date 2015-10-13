@@ -11,6 +11,12 @@ import UIKit
 class EventDetailViewController: UIViewController {
 
     var event : Event? = nil
+    var name : String = ""
+    var from : String = ""
+    var to : String = ""
+    var people : [String] = []
+    var time : String = ""
+    var note : String = ""
     
     @IBOutlet weak var peopleLabel: UILabel!
     
@@ -27,22 +33,51 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var printPeople : String = ""
-        for var i = 0; i < self.event?.people.count; i++ {
-            printPeople = printPeople + " " + self.event!.people[i]
+        if self.event != nil {
+            var printPeople : String = ""
+            for var i = 0; i < self.event?.people.count; i++ {
+                printPeople = printPeople + " " + self.event!.people[i]
+            }
+            self.navigationItem.title = self.event?.name
+            self.eventLabel.text = self.event?.name
+            self.fromLabel.text = self.event?.from
+            self.toLabel.text = self.event?.to
+            self.peopleLabel.text = printPeople
+            self.noteLabel.text = self.event?.note
+            self.timeLabel.text = self.event?.time
         }
-        
-        
-        self.navigationItem.title = self.event!.name
-        self.eventLabel.text = self.event?.name
-        self.fromLabel.text = self.event!.from
-        self.toLabel.text = self.event!.to
-        self.peopleLabel.text = printPeople
-        self.noteLabel.text = self.event!.note
-        self.timeLabel.text = self.event?.time
+        else {
+            var printPeople : String = ""
+            for var i = 0; i < self.event?.people.count; i++ {
+                printPeople = printPeople + " " + self.people[i]
+            }
+            self.navigationItem.title = self.name
+            self.eventLabel.text = self.name
+            self.fromLabel.text = self.from
+            self.toLabel.text = self.to
+            self.peopleLabel.text = printPeople
+            self.noteLabel.text = self.note
+            self.timeLabel.text = self.time
+        }
+
         
         
     }
+//    override func viewWillAppear(animated: Bool) {
+//        var printPeople : String = ""
+//        for var i = 0; i < self.event?.people.count; i++ {
+//            printPeople = printPeople + " " + self.event!.people[i]
+//        }
+//        
+//        
+//        self.navigationItem.title = self.event?.name
+//        self.eventLabel.text = self.event?.name
+//        self.fromLabel.text = self.event?.from
+//        self.toLabel.text = self.event?.to
+//        self.peopleLabel.text = printPeople
+//        self.noteLabel.text = self.event?.note
+//        self.timeLabel.text = self.event?.time
+//    }
     
     
     @IBAction func StartTapped(sender: AnyObject) {
@@ -55,9 +90,19 @@ class EventDetailViewController: UIViewController {
         
         
         if segue.identifier == "ToLocationSharing" {
+            var printPeople : String = ""
+            for var i = 0; i < self.event?.people.count; i++ {
+                printPeople = printPeople + " " + self.event!.people[i]
+            }
             let locationViewController = segue.destinationViewController as! LocationSharingViewController
             locationViewController.user = PFUser.currentUser()!.username!
             locationViewController.gname = self.event!.name
+            locationViewController.from = self.event!.from
+            locationViewController.to = self.event!.to
+            locationViewController.people = self.event!.people
+            locationViewController.note = self.event!.note
+            locationViewController.time = self.event!.time
+            
         }
     }
 

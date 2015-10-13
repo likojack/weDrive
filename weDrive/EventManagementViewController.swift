@@ -25,15 +25,15 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
         
     }
     func removeDuplicates(array: [Event]) -> [Event] {
-        var encountered = Set<Event>()
+        var encountered = Set<String>()
         var result: [Event] = []
         for value in array {
-            if encountered.contains(value) {
+            if encountered.contains(value.name) {
                 // Do not add a duplicate element.
             }
             else {
                 // Add value to the set.
-                encountered.insert(value)
+                encountered.insert(value.name)
                 // ... Append the value.
                 result.append(value)
             }
@@ -65,7 +65,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
                     for object in objects {
                         let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
                         let invited_event = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                        print(object["eventName"] as! String)
+                        
                         invited_event.name = object["eventName"] as! String
                         invited_event.from = object["startPoint"] as! String
                         invited_event.to = object["endPoint"] as! String
@@ -73,6 +73,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
                         self.eventlist.append(invited_event)
                     }
                     self.eventlist = self.removeDuplicates(self.eventlist)
+                    
                     self.eventListTableView.reloadData()
                     
                 }

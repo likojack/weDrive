@@ -24,6 +24,11 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     var sharing:Bool = true
     
     var gname :String = "alex"
+    var from: String = " from "
+    var to: String = " from "
+    var people: [String] = []
+    var note: String = "  "
+    var time: String = "  "
     
     
     
@@ -630,6 +635,25 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         myLineRenderer.lineWidth = 3
         return myLineRenderer
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "backToViewSegue" {
+            let detailViewController = segue.destinationViewController as! EventDetailViewController
+            detailViewController.name = self.gname
+            detailViewController.from = self.from
+            detailViewController.to = self.to
+            detailViewController.note = self.note
+            detailViewController.time = self.time
+            detailViewController.people = self.people
+        }
+    }
+    
+    
+    @IBAction func backTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("backToViewSegue", sender: self)
+    }
+
     
     
     

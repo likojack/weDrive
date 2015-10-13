@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kOg-3n-QHF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8h1-lI-XRO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -142,11 +142,6 @@
                                                 <action selector="backTapped:" destination="Lnc-NE-MLO" id="k6Q-4t-Ymb"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="LLA-hl-DBm">
-                                            <connections>
-                                                <segue destination="M64-Yx-1kB" kind="show" identifier="editEventSegue" id="r7W-Ij-Ae3"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -157,13 +152,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNb-hN-GEC">
-                                <rect key="frame" x="282" y="540" width="36" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Chat">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="From:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-Zs-rsa">
                                 <rect key="frame" x="57" y="296" width="54" height="21"/>
                                 <animations/>
@@ -242,7 +230,6 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nNb-hN-GEC" firstAttribute="centerX" secondItem="dDx-Qz-Xfp" secondAttribute="centerX" id="1yB-7t-DaK"/>
                             <constraint firstItem="4DX-iR-cnZ" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leading" id="2Nk-44-Mc6"/>
                             <constraint firstItem="FlB-Js-Jyc" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="30" id="Ctf-Np-Yua"/>
                             <constraint firstAttribute="trailing" secondItem="4DX-iR-cnZ" secondAttribute="trailing" id="LF1-3T-yce"/>
@@ -385,13 +372,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ru-PL-U3s">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ru-PL-U3s">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <animations/>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKX-Dn-ibU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Map" id="9e3-6T-vob">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="UNf-qy-75E">
+                                            <connections>
+                                                <action selector="backTapped:" destination="Ct5-1D-yNm" id="2NM-lb-PG2"/>
+                                                <segue destination="Lnc-NE-MLO" kind="show" identifier="backToViewSegue" id="Lwx-tC-VeY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9ru-PL-U3s" firstAttribute="leading" secondItem="Srk-JC-JqN" secondAttribute="leadingMargin" constant="-20" id="8hS-xd-ya8"/>
+                            <constraint firstItem="YKX-Dn-ibU" firstAttribute="top" secondItem="Srk-JC-JqN" secondAttribute="topMargin" id="8tW-7Z-qWi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YKX-Dn-ibU" secondAttribute="trailing" constant="-20" id="MIV-p9-w8c"/>
+                            <constraint firstItem="w9x-6h-WO7" firstAttribute="top" secondItem="9ru-PL-U3s" secondAttribute="bottom" id="QCy-L8-qMF"/>
+                            <constraint firstItem="YKX-Dn-ibU" firstAttribute="leading" secondItem="Srk-JC-JqN" secondAttribute="leadingMargin" constant="-20" id="ix5-gB-qpL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ru-PL-U3s" secondAttribute="trailing" constant="-20" id="m2n-xA-tdk"/>
+                            <constraint firstItem="9ru-PL-U3s" firstAttribute="top" secondItem="YKX-Dn-ibU" secondAttribute="bottom" id="t3b-Xm-5JE"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="map1" destination="9ru-PL-U3s" id="X2x-N2-h40"/>
@@ -866,121 +875,10 @@
             </objects>
             <point key="canvasLocation" x="-583" y="-1094"/>
         </scene>
-        <!--Event Edit View Controller-->
-        <scene sceneID="tkR-yM-Rav">
-            <objects>
-                <viewController id="M64-Yx-1kB" customClass="EventEditViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Qf-Ub-ZhD"/>
-                        <viewControllerLayoutGuide type="bottom" id="JcS-m9-RNl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eJT-w4-ovb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5WV-Km-j44">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="QdI-lG-5g7"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Edit Event" id="fdE-kW-3XE">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Av5-Uk-4As">
-                                            <connections>
-                                                <segue destination="Lnc-NE-MLO" kind="show" identifier="cancelEditSegue" id="GG4-nJ-DLe"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LjB-2C-UAM">
-                                            <connections>
-                                                <segue destination="Lnc-NE-MLO" kind="show" identifier="saveEditSegue" id="RpI-2A-lD2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NQc-ze-Zfh">
-                                <rect key="frame" x="171" y="150" width="259" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="259" id="cAC-7d-PYq"/>
-                                    <constraint firstAttribute="height" constant="30" id="eYT-Y5-sEG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfz-o0-YVu">
-                                <rect key="frame" x="171" y="370" width="259" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dxF-ep-lj4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iq7-mo-NJQ">
-                                <rect key="frame" x="170" y="320" width="260" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4e4-QZ-hUX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmz-T4-OAx">
-                                <rect key="frame" x="171" y="270" width="259" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="tmK-j9-9L8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEc-CD-Fyu">
-                                <rect key="frame" x="242" y="235" width="117" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dHB-oM-xiq"/>
-                                </constraints>
-                                <state key="normal" title="Tap To Pick Time">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWV-1K-HfK">
-                                <rect key="frame" x="236" y="197" width="129" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1Mq-jR-8XM"/>
-                                </constraints>
-                                <state key="normal" title="Tap To Add People">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3eP-GP-32O">
-                                <rect key="frame" x="171" y="420" width="259" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="k1B-Hk-5pt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="5WV-Km-j44" firstAttribute="top" secondItem="eJT-w4-ovb" secondAttribute="topMargin" id="3Al-e7-W4j"/>
-                            <constraint firstItem="mfz-o0-YVu" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="6rm-6H-Ctr"/>
-                            <constraint firstItem="cWV-1K-HfK" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="74o-3O-LfG"/>
-                            <constraint firstItem="BEc-CD-Fyu" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="MQm-4r-Il6"/>
-                            <constraint firstItem="Iq7-mo-NJQ" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="Qq3-rH-xAT"/>
-                            <constraint firstItem="5WV-Km-j44" firstAttribute="leading" secondItem="eJT-w4-ovb" secondAttribute="leadingMargin" constant="-20" id="RVO-d6-PHy"/>
-                            <constraint firstItem="3eP-GP-32O" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="dTU-zf-T5a"/>
-                            <constraint firstItem="5WV-Km-j44" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="gbt-hX-4ti"/>
-                            <constraint firstItem="kmz-T4-OAx" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="rHz-gY-Z6e"/>
-                            <constraint firstItem="NQc-ze-Zfh" firstAttribute="centerX" secondItem="eJT-w4-ovb" secondAttribute="centerX" id="sxn-99-JW4"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3c4-29-F1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="429" y="-1811"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2jH-pT-p4o"/>
-        <segue reference="BhZ-mW-J4i"/>
         <segue reference="Bez-eO-JaA"/>
+        <segue reference="dFF-Yg-ybM"/>
+        <segue reference="Lwx-tC-VeY"/>
     </inferredMetricsTieBreakers>
 </document>
