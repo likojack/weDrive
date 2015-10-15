@@ -49,6 +49,8 @@
 		699271641B5E99B900660E95 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 699271631B5E99B900660E95 /* default.jpg */; };
 		699271661B5EA31500660E95 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699271651B5EA31500660E95 /* ZoomViewController.swift */; };
 		69F541231B70FD5C00FC111C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F541211B70FD5C00FC111C /* Main.storyboard */; };
+		978BCF1E1BCF8E3B008C72FC /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978BCF1C1BCF8E3B008C72FC /* ProfileDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		978BCF1F1BCF8E3B008C72FC /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978BCF1D1BCF8E3B008C72FC /* ProfileEditViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		DFC51CD81BBF8A2900A3AE2B /* resultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC51CD71BBF8A2900A3AE2B /* resultsCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E54D17781BA298F80036A0DC /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */; };
 		E5BBC1E41BC65E0900671570 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BBC1E21BC65E0900671570 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
@@ -115,6 +117,8 @@
 		699271631B5E99B900660E95 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = SOURCE_ROOT; };
 		699271651B5EA31500660E95 /* ZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		69F541221B70FD5C00FC111C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		978BCF1C1BCF8E3B008C72FC /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		978BCF1D1BCF8E3B008C72FC /* ProfileEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		DFC51CD71BBF8A2900A3AE2B /* resultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resultsCell.swift; sourceTree = "<group>"; };
 		E54D17771BA298F80036A0DC /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		E5BBC1E21BC65E0900671570 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "weDrive/FacebookSDKs-iOS-20151007/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				6992713D1B5E603000660E95 /* EventManagementViewController.swift */,
 				6992715F1B5E65A900660E95 /* EventDetailViewController.swift */,
 				69F541211B70FD5C00FC111C /* Main.storyboard */,
+				978BCF1C1BCF8E3B008C72FC /* ProfileDetailViewController.swift */,
+				978BCF1D1BCF8E3B008C72FC /* ProfileEditViewController.swift */,
 				699271421B5E603000660E95 /* Images.xcassets */,
 				699271441B5E603000660E95 /* LaunchScreen.xib */,
 				6992713A1B5E603000660E95 /* weDrive.xcdatamodeld */,
@@ -403,8 +409,10 @@
 				0A1DC1901B8995CE00A83138 /* LocationSharingViewController.swift in Sources */,
 				DFC51CD81BBF8A2900A3AE2B /* resultsCell.swift in Sources */,
 				699271391B5E603000660E95 /* AppDelegate.swift in Sources */,
+				978BCF1F1BCF8E3B008C72FC /* ProfileEditViewController.swift in Sources */,
 				699271621B5E7B6B00660E95 /* CreateEventViewController.swift in Sources */,
 				E5F4A71B1B8893EA00F46ED6 /* SignupVC.swift in Sources */,
+				978BCF1E1BCF8E3B008C72FC /* ProfileDetailViewController.swift in Sources */,
 				E54D17781BA298F80036A0DC /* ForgetPasswordVC.swift in Sources */,
 				0A0FF3DB1B71AABB006798F5 /* DatePickerDialog.swift in Sources */,
 			);

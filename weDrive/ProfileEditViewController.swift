@@ -13,7 +13,7 @@ import Parse
 class ProfileEditViewController: UIViewController{
     
     @IBOutlet weak var Email: UITextField!
-    
+   
     @IBOutlet weak var Username: UITextField!
     
     @IBOutlet weak var Region: UITextField!
@@ -31,14 +31,15 @@ class ProfileEditViewController: UIViewController{
         }
     
     @IBAction func CancelButtonTapped(sender: AnyObject) {
-         self.performSegueWithIdentifier("CancelSegue", sender: self)
+        self.performSegueWithIdentifier("CancelButtonTapped", sender: self)
     }
+ 
     @IBAction func SaveButtonTapped(sender: AnyObject) {
         PFUser.currentUser()?.email = self.Email.text
         PFUser.currentUser()?.email = self.Username.text
         PFUser.currentUser()?.email = self.Region.text
         PFUser.currentUser()?.email = self.Status.text
-        self.performSegueWithIdentifier("SaveSegue", sender: self)
-
+        self.performSegueWithIdentifier("CancelButtonTapped", sender: self)
     }
+    
 }
