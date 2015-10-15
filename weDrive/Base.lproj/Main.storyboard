@@ -81,24 +81,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlB-Js-Jyc">
-                                <rect key="frame" x="50" y="540" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Quit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-eX-DmU">
-                                <rect key="frame" x="516" y="540" width="34" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="StartTapped:" destination="Lnc-NE-MLO" eventType="touchUpInside" id="4dB-Bh-95M"/>
-                                    <segue destination="Ct5-1D-yNm" kind="show" identifier="ToLocationSharing" id="xEr-Hb-zUn"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="People:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZT-SG-bWv">
                                 <rect key="frame" x="57" y="184" width="57" height="21"/>
                                 <animations/>
@@ -226,12 +208,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4e-eX-DmU">
+                                <rect key="frame" x="283" y="540" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartTapped:" destination="Lnc-NE-MLO" eventType="touchUpInside" id="4dB-Bh-95M"/>
+                                    <segue destination="Ct5-1D-yNm" kind="show" identifier="ToLocationSharing" id="xEr-Hb-zUn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4DX-iR-cnZ" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leading" id="2Nk-44-Mc6"/>
-                            <constraint firstItem="FlB-Js-Jyc" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="30" id="Ctf-Np-Yua"/>
+                            <constraint firstItem="y4e-eX-DmU" firstAttribute="centerX" secondItem="dDx-Qz-Xfp" secondAttribute="centerX" id="EQG-nG-miU"/>
                             <constraint firstAttribute="trailing" secondItem="4DX-iR-cnZ" secondAttribute="trailing" id="LF1-3T-yce"/>
                             <constraint firstItem="ZZT-SG-bWv" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="10" id="MXe-hm-5cj"/>
                             <constraint firstItem="4DX-iR-cnZ" firstAttribute="top" secondItem="dDx-Qz-Xfp" secondAttribute="top" id="TZx-la-Kib"/>
@@ -239,7 +232,6 @@
                             <constraint firstItem="7eK-Zs-rsa" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="10" id="X0l-xC-lSc"/>
                             <constraint firstItem="9C3-uW-ZdH" firstAttribute="centerX" secondItem="dDx-Qz-Xfp" secondAttribute="centerX" id="g5s-sd-eoI"/>
                             <constraint firstItem="3lp-1k-iVx" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="10" id="haE-rm-uaJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y4e-eX-DmU" secondAttribute="trailing" constant="30" id="iXA-mS-aAF"/>
                             <constraint firstItem="Hom-p4-D51" firstAttribute="centerX" secondItem="dDx-Qz-Xfp" secondAttribute="centerX" id="kJ2-RT-YGg"/>
                             <constraint firstItem="NNk-H1-yja" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="10" id="nri-bH-2SE"/>
                             <constraint firstItem="mGk-a8-Ob0" firstAttribute="leading" secondItem="dDx-Qz-Xfp" secondAttribute="leadingMargin" constant="10" id="pCs-2c-68B"/>
@@ -383,7 +375,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="UNf-qy-75E">
                                             <connections>
                                                 <action selector="backTapped:" destination="Ct5-1D-yNm" id="2NM-lb-PG2"/>
-                                                <segue destination="Lnc-NE-MLO" kind="show" identifier="backToViewSegue" id="Lwx-tC-VeY"/>
+                                                <segue destination="vXZ-lx-hvc" kind="show" identifier="backToListSegue" id="894-qN-Lrv"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -877,8 +869,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bez-eO-JaA"/>
         <segue reference="dFF-Yg-ybM"/>
-        <segue reference="Lwx-tC-VeY"/>
+        <segue reference="Bez-eO-JaA"/>
     </inferredMetricsTieBreakers>
 </document>
