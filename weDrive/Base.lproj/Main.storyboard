@@ -119,12 +119,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odS-9x-XjB">
-                                <rect key="frame" x="186" y="323" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj8-Jr-NfQ">
                                 <rect key="frame" x="192" y="370" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -195,6 +189,12 @@
                                     <segue destination="8h1-lI-XRO" kind="show" identifier="LogoutButtonTapped" id="CxV-Am-GDF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odS-9x-XjB">
+                                <rect key="frame" x="186" y="323" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -486,16 +486,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55C-Pf-Ds0">
-                                <rect key="frame" x="144" y="389" width="324" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="wEP-Oa-A3K"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hom-p4-D51">
                                 <rect key="frame" x="187" y="434" width="226" height="98"/>
                                 <animations/>
@@ -517,6 +507,16 @@
                                     <segue destination="Ct5-1D-yNm" kind="show" identifier="ToLocationSharing" id="xEr-Hb-zUn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55C-Pf-Ds0">
+                                <rect key="frame" x="138" y="388" width="324" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="wEP-Oa-A3K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -821,7 +821,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKa-DX-Sej">
-                                <rect key="frame" x="171" y="370" width="259" height="30"/>
+                                <rect key="frame" x="171" y="358" width="259" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="k3h-Wv-arR"/>
@@ -874,7 +874,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYu-6T-mre">
-                                <rect key="frame" x="171" y="420" width="259" height="30"/>
+                                <rect key="frame" x="171" y="425" width="259" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Es0-fe-SBb"/>
@@ -882,6 +882,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="e.g. ANU Acton, ACT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekg-Hp-SzP">
+                                <rect key="frame" x="171" y="396" width="259" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.49505349859999997" green="0.49505349859999997" blue="0.49505349859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -894,6 +900,7 @@
                             <constraint firstItem="uUf-OT-CRf" firstAttribute="centerX" secondItem="MiQ-OQ-mOi" secondAttribute="centerX" id="ZNm-iX-SN7"/>
                             <constraint firstItem="hFr-Q4-dOr" firstAttribute="centerX" secondItem="MiQ-OQ-mOi" secondAttribute="centerX" id="bgV-nQ-Vam"/>
                             <constraint firstItem="F8M-9N-88g" firstAttribute="centerX" secondItem="MiQ-OQ-mOi" secondAttribute="centerX" id="cI5-Eg-Khp"/>
+                            <constraint firstItem="Ekg-Hp-SzP" firstAttribute="centerX" secondItem="MiQ-OQ-mOi" secondAttribute="centerX" id="cLs-Di-QeJ"/>
                             <constraint firstItem="8yU-sD-Ycu" firstAttribute="centerX" secondItem="MiQ-OQ-mOi" secondAttribute="centerX" id="cVl-2N-X68"/>
                             <constraint firstAttribute="trailing" secondItem="Tb1-al-lGd" secondAttribute="trailing" id="oco-k3-dgg"/>
                         </constraints>
@@ -1169,7 +1176,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ugl-ZB-kVH"/>
         <segue reference="CxV-Am-GDF"/>
-        <segue reference="2jH-pT-p4o"/>
         <segue reference="Bez-eO-JaA"/>
+        <segue reference="Xhe-Az-ObW"/>
     </inferredMetricsTieBreakers>
 </document>
