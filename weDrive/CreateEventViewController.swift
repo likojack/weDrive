@@ -213,6 +213,7 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
             contactListViewController.from = self.fromTextField.text!
             contactListViewController.to = self.toTextField.text!
             contactListViewController.note = self.noteTextField.text!
+            contactListViewController.selectedPeople = self.people
         }
     }
     //@IBOutlet weak var DatePicker: UIDatePicker!

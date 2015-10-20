@@ -12,6 +12,7 @@ import UIKit
 var userName = ""
 
 
+
 class ContactListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var resultsTable: UITableView!
@@ -81,14 +82,35 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = self.resultsUsernameArray[indexPath.row]
+        if(selectedPeople.contains((cell.textLabel?.text)!)){
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
         return cell
+            
         
+    }
+    func removeDuplicates(array: [String]) -> [String] {
+        var encountered = Set<String>()
+        var result: [String] = []
+        for value in array {
+            if encountered.contains(value) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "peopleAddedSegue" {
             let eventCreateViewController = segue.destinationViewController as! CreateEventViewController
+            self.selectedPeople = removeDuplicates(self.selectedPeople)
             eventCreateViewController.people = self.selectedPeople
             eventCreateViewController.name = self.name
             eventCreateViewController.note = self.note
@@ -110,10 +132,18 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
             eventCreateViewController.to = self.to
         }
     }
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if (cell!.selected == true) {
-            selectedPeople.append(cell!.textLabel!.text!)
+            if(cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+                selectedPeople = selectedPeople.filter(){$0 != cell?.textLabel?.text}
+            }else{
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                selectedPeople.append(cell!.textLabel!.text!)
+            }
         }
     }
     
