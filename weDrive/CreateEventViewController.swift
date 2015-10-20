@@ -11,8 +11,7 @@ import CoreData
 
 class CreateEventViewController: UIViewController,UINavigationControllerDelegate{
 
-    
-    @IBOutlet weak var coverImage: UIImageView!
+	@IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var peopleTextField: UITextField!
     @IBOutlet weak var fromTextField: UITextField!
@@ -23,7 +22,6 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
    
     
     var people : [String] = []
-    
     var name : String = ""
     var note : String = ""
     var from : String = ""
@@ -33,16 +31,9 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		self.scrollView.addGestureRecognizer(tap)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
-        
-        /*
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-		*/
 		
         let backButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelTapped:")
         navigationItem.leftBarButtonItem = backButton
@@ -52,17 +43,21 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         
     }
     
-    func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y -= 150
-    }
-    func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y += 150
-    }
-    
-    func DismissKeyboard(){
-        view.endEditing(true)
-    }
-    
+	func dismissKeyboard(){ //hide keyboard on tapping anywhere
+		view.endEditing(true)
+	}
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder() //hide keyboard on return
+		return true
+	}
+	func textFieldDidBeginEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, 100), animated: true) //250 is size of keyboard
+	}
+	func textFieldDidEndEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, 0), animated: true) //250 is size of keyboard
+	}
+
+	
     override func viewWillAppear(animated: Bool) {
         self.nameTextField.text = self.name
         self.fromTextField.text = self.from
@@ -77,8 +72,6 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
             self.timeTextField.text = "\(date)"
         }
     }
-    
-    
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("backToManageSegue", sender: self)

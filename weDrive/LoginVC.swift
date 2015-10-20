@@ -34,7 +34,7 @@ class LoginVC: UIViewController, UITextFieldDelegate{
 		scrollView.setContentOffset(CGPointMake(0, 60), animated: true) //250 is size of keyboard
 	}
 	func textFieldDidEndEditing(textField: UITextField) {
-		scrollView.setContentOffset(CGPointMake(0, -75), animated: true) //250 is size of keyboard
+		scrollView.setContentOffset(CGPointMake(0, 0), animated: true) //250 is size of keyboard
 	}
 	//Login Button	
 	@IBAction func loginButton(sender: AnyObject) {
