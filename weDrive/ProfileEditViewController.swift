@@ -27,7 +27,6 @@ class ProfileEditViewController: UIViewController{
         self.Username.text = PFUser.currentUser()?.email
         self.Region.text = PFUser.currentUser()?.email
         self.Status.text = PFUser.currentUser()?.email
-
         }
     
     @IBAction func CancelButtonTapped(sender: AnyObject) {

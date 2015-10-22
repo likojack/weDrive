@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+
 
 class CreateEventViewController: UIViewController,UINavigationControllerDelegate{
 
-    
-    @IBOutlet weak var coverImage: UIImageView!
+	@IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var peopleTextField: UITextField!
     @IBOutlet weak var fromTextField: UITextField!
@@ -23,7 +24,6 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
    
     
     var people : [String] = []
-    
     var name : String = ""
     var note : String = ""
     var from : String = ""
@@ -33,16 +33,9 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		self.scrollView.addGestureRecognizer(tap)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
-        
-        /*
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
-		*/
 		
         let backButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelTapped:")
         navigationItem.leftBarButtonItem = backButton
@@ -52,17 +45,21 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         
     }
     
-    func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y -= 150
-    }
-    func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y += 150
-    }
-    
-    func DismissKeyboard(){
-        view.endEditing(true)
-    }
-    
+	func dismissKeyboard(){ //hide keyboard on tapping anywhere
+		view.endEditing(true)
+	}
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		textField.resignFirstResponder() //hide keyboard on return
+		return true
+	}
+	func textFieldDidBeginEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, 100), animated: true) //250 is size of keyboard
+	}
+	func textFieldDidEndEditing(textField: UITextField) {
+		scrollView.setContentOffset(CGPointMake(0, 0), animated: true) //250 is size of keyboard
+	}
+
+	
     override func viewWillAppear(animated: Bool) {
         self.nameTextField.text = self.name
         self.fromTextField.text = self.from
@@ -77,8 +74,6 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
             self.timeTextField.text = "\(date)"
         }
     }
-    
-    
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("backToManageSegue", sender: self)
@@ -101,14 +96,13 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         TestObject["eventName"] = event.name
         TestObject["startPoint"] = event.from
         TestObject["endPoint"] = event.to
-        TestObject["participants"] = event.people
         
         for i in event.people {
             let object_location = PFObject(className: "Locations")
             object_location["uID"] = i
             object_location["groupname"] = event.name
             let query = PFQuery(className: "_User")
-            query.whereKey("username", equalTo:i )
+            query.whereKey("firstName", equalTo:i )
             
             query.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -116,12 +110,13 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
                     // The find succeeded.
                     print("Successfully retrieved ")
                 }
+                
                     // Do something with the found objects
                     if let objects = objects as? [PFObject] {
-                        let latitude = objects[0]["latitude"]
-                        let longitude = objects[0]["longitude"]
-                        object_location["latitude"] = latitude
-                        object_location["longitude"] = longitude
+//                        let latitude = objects[0]["latitude"]
+//                        let longitude = objects[0]["longitude"]
+//                        object_location["latitude"] = latitude
+//                        object_location["longitude"] = longitude
                         object_location["sharing"] = true
                         object_location.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("location object saved")}
                 
@@ -133,11 +128,11 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
         
         }
         let user_location = PFObject(className: "Locations")
-        user_location["uID"] = PFUser.currentUser()!.username!
+        user_location["uID"] = PFUser.currentUser()!.valueForKey("firstName")!
         user_location["groupname"] = event.name
         let query = PFQuery(className: "_User")
         query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
-        
+        print(PFUser.currentUser()?.username!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -146,10 +141,10 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
             }
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
-                    let latitude = objects[0]["latitude"]
-                    let longitude = objects[0]["longitude"]
-                    user_location["latitude"] = latitude
-                    user_location["longitude"] = longitude
+//                    let latitude = objects[0]["latitude"]
+//                    let longitude = objects[0]["longitude"]
+//                    user_location["latitude"] = latitude
+//                    user_location["longitude"] = longitude
                     user_location["sharing"] = true
                     user_location.saveInBackgroundWithBlock{(success:Bool, error: NSError?) -> Void in print("location object saved")}
                 
@@ -177,7 +172,9 @@ class CreateEventViewController: UIViewController,UINavigationControllerDelegate
                     }
                     if let placemark_end = placemarks?.first {
                         let coordinates_end:CLLocationCoordinate2D = placemark_end.location!.coordinate
-                        
+                        print("@@@@")
+                        print(event.from)
+                        print(event.to)
                         TestObject["start_long"] = coordinates_start.longitude
                         TestObject["start_la"] = coordinates_start.latitude
                         TestObject["end_long"] = coordinates_end.longitude

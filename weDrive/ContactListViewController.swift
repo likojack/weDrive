@@ -43,7 +43,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
         
         resultsTable.frame = CGRectMake(0, 0, theHeight, theHeight-64)
         
-        userName = PFUser.currentUser()!.objectId!
+        userName = PFUser.currentUser()!.username!
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,15 +56,22 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
         resultsUsernameArray.removeAll(keepCapacity: false)
         
         //let predicate = NSPredicate(format: "objectId != '" + userName + "'")
-        let query = PFQuery(className: "_User")
-        query.whereKey("objectId", notEqualTo: userName)
+        
+        //let query = PFQuery(className: "_User")
+        //query.whereKey("objectId", notEqualTo: userName)
+        //let objects = query.findObjects()
+        
+        let predicate = NSPredicate(format: "username != '"+userName+"'")
+        let query = PFQuery(className: "_User", predicate: predicate)
         let objects = query.findObjects()
         
         for object in objects!
         {
-            self.resultsUsernameArray.append(object.username!!)
-            self.resultsProfileNameArray.append(object["firstName"] as! String)
-            
+            //self.resultsUsernameArray.append(object.username!!)
+            //if ((object["firstName"]) != nil)
+            //{print(object["firstName"]!!)}
+            //self.resultsProfileNameArray.append(object["firstName"] as! String)
+            self.resultsUsernameArray.append(object["firstName"] as! String)
             self.resultsTable.reloadData()
         }
         

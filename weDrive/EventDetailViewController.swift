@@ -92,6 +92,9 @@ class EventDetailViewController: UIViewController {
                 printPeople = printPeople + " " + self.event!.people[i]
             }
             let locationViewController = segue.destinationViewController as! LocationSharingViewController
+//            print("!!!!!!!")
+//            print("@@@@@@@@@")
+            print(PFUser.currentUser()?.username)
             locationViewController.user = PFUser.currentUser()!.username!
             locationViewController.gname = self.event!.name
 //            locationViewController.from = self.event!.from

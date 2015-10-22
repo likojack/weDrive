@@ -44,8 +44,7 @@ class EventManagementViewController: UIViewController, UITableViewDataSource, UI
     override func viewWillAppear(animated: Bool) {
         //insert invited event to event management list
         let query = PFQuery(className: "Events")
-        query.whereKey("participants", containedIn: [PFUser.currentUser()!.username!])
-        
+        query.whereKey("participants", containedIn: [PFUser.currentUser()!.valueForKey("firstName")!])
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {

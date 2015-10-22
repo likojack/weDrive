@@ -14,7 +14,7 @@ import CoreLocation
 class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
-    
+    var wait:Bool = false
     
     @IBOutlet weak var map1: MKMapView!
     
@@ -44,6 +44,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     
     var myRoute : MKRoute?
+    var operationQueue = NSOperationQueue()
     
     var userdic = [String: String]()
     var tempuserdic = [String: String]()
@@ -52,21 +53,26 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.builddic(self.gname)
+//        sleep(5)
         var coords_start: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 142)
         var coords_dest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 143)
+        let serial_queue = dispatch_queue_create( "serial queue", nil)
+        dispatch_async( serial_queue) {
+            self.builddic(self.gname)
+            
+        }
+        dispatch_async( serial_queue) {
+
+            
         
         let query = PFQuery(className: "Events")
-        query.whereKey("eventName", equalTo:gname )
-        
+        query.whereKey("eventName", equalTo:self.gname )
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved ")
-                // Do something with the found objects
                 if let objects = objects as? [PFObject] {
-//                    for object in objects{
                     let start_la : Double = objects[0]["start_la"] as! Double!
                     let start_lo : Double = objects[0]["start_long"] as! Double!
                     let end_la : Double = objects[0]["end_la"] as! Double!
@@ -77,15 +83,13 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                     coords_dest.longitude = end_lo
                     self.startp.coordinate = coords_start
                     self.destp.coordinate = coords_dest
-                    print("!!!!!!!!!!!!!!!!")
-                    print(self.startp.coordinate)
-                    print(self.destp.coordinate)
                     
                     self.map1.addAnnotation(self.startp)
                     self.map1.addAnnotation(self.destp)
                     self.map1.delegate = self
                     self.map1.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.startp.coordinate.latitude, self.startp.coordinate.longitude), MKCoordinateSpanMake(3.0,3.0)), animated: true)
-                    self.builddic(self.gname)
+                    
+                    
                     
                     let directionsRequest = MKDirectionsRequest()
                     let markStart = MKPlacemark(coordinate:CLLocationCoordinate2DMake(self.startp.coordinate.latitude, self.startp.coordinate.longitude), addressDictionary: nil)
@@ -105,62 +109,84 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                             
                             self.myRoute = response!.routes[0] as MKRoute
                             self.map1.addOverlay(self.myRoute!.polyline)
-                            print(self.myRoute!)
                         }
                     })
-                    
-                    self.locationManager.delegate = self
-                    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                    self.locationManager.startUpdatingLocation()
-                    self.locationManager.requestWhenInUseAuthorization()
-                    //}
+                   
                 }
             }else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
             }
         
-    }
-        //map initiate
+    
+        }
+        }
+        dispatch_async( serial_queue) {
+            self.locationManager.delegate=self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
+            self.locationManager.requestWhenInUseAuthorization()
+            
+        }
+
+
         
+//        
+//        let serial_queue = dispatch_queue_create( "serial queue", nil)
+//        
+//        dispatch_async( serial_queue) {
+//            self.builddic(self.gname)
+//        }
+//        
+//        dispatch_sync( serial_queue) {
+//                        self.locationManager.delegate=self
+//                        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//                        self.locationManager.startUpdatingLocation()
+//                        self.locationManager.requestWhenInUseAuthorization()
+//        }
         
-        //coordstart()
-        //        self.startp.coordinate = coords_start
-        //        self.destp.coordinate = coords_dest
-        //
-        //        map1.addAnnotation(startp)
-        //        map1.addAnnotation(destp)
-        //        self.map1.delegate = self
-        //        self.map1.setRegion(MKCoordinateRegionMake(CLLocationCoordinate2DMake(startp.coordinate.latitude, startp.coordinate.longitude), MKCoordinateSpanMake(3.0,3.0)), animated: true)
-        //        builddic(gname)
-        //
-        //        let directionsRequest = MKDirectionsRequest()
-        //        let markStart = MKPlacemark(coordinate:CLLocationCoordinate2DMake(startp.coordinate.latitude, startp.coordinate.longitude), addressDictionary: nil)
-        //
-        //        let markDest = MKPlacemark(coordinate:CLLocationCoordinate2DMake(destp.coordinate.latitude, destp.coordinate.longitude), addressDictionary: nil)
-        //
-        //        directionsRequest.source = MKMapItem(placemark:markStart)
-        //
-        //        directionsRequest.destination = MKMapItem(placemark: markDest)
-        //
-        //        //print(directionsRequest.destination)
-        //        directionsRequest.transportType = MKDirectionsTransportType.Automobile
-        //        let directions = MKDirections(request: directionsRequest)
-        //        directions.calculateDirectionsWithCompletionHandler({
-        //            (response:MKDirectionsResponse?, error:NSError?) -> Void in
-        //            if error == nil {
-        //
-        //                self.myRoute = response!.routes[0] as MKRoute
-        //                self.map1.addOverlay(self.myRoute!.polyline)
-        //                print(self.myRoute!)
-        //            }
-        //        })
-        //
-        //       locationManager.delegate = self
-        //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //        locationManager.startUpdatingLocation()
-        //        locationManager.requestWhenInUseAuthorization()
-        //
+//        self.locationManager.delegate=self
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        self.locationManager.startUpdatingLocation()
+//        self.locationManager.requestWhenInUseAuthorization()
+        
+
+
+    
+//        let operation1 : NSBlockOperation = NSBlockOperation (block: {
+//            self.builddic(self.gname)
+//            
+//            let operation2 : NSBlockOperation = NSBlockOperation (block: {
+//                
+//                self.locationManager.delegate=self
+//                
+//                let operation3 : NSBlockOperation = NSBlockOperation (block: {
+//                    
+//                    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//                    
+//                    let operation4: NSBlockOperation = NSBlockOperation (block: {
+//                        
+//                        self.locationManager.startUpdatingLocation()
+//                        
+//                        let operation5: NSBlockOperation = NSBlockOperation (block: {
+//                            self.locationManager.requestWhenInUseAuthorization()
+//                            
+//                        })
+//                        self.operationQueue.addOperation(operation5)
+//                    })
+//                    self.operationQueue.addOperation(operation4)
+//                    
+//                })
+//                self.operationQueue.addOperation(operation3)
+//            })
+//            self.operationQueue.addOperation(operation2)
+//            })
+//        self.operationQueue.addOperation(operation1)
+//        self.locationManager.delegate = self
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        self.locationManager.startUpdatingLocation()
+//        self.locationManager.requestWhenInUseAuthorization()
+        
         
         
         
@@ -218,6 +244,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     
     func builddic(groupname: String) {
+        print("!!!!!@@@@@@")
         let query = PFQuery(className: "Locations")
         query.whereKey("groupname", equalTo:gname )
         
@@ -226,22 +253,20 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
             
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved ")
+//                print("Successfully retrieved ")
                 // Do something with the found objects
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        //println(object.objectId)
-                        //println(object["uID"])
+                        print(object.objectId)
+                        print(object["uID"])
                         let temp : String = object.objectId!
                         let temp2 : String = object["uID"]! as! String
-//                        print("********")
+                        print("********")
                         self.userdic[temp2] = temp
-//                        print(self.userdic)
-                        
+                        print(self.userdic)
+                        self.wait = true
                         self.notemptyDictionary = true
-                        
-                        
-                    }
+                    } 
                 }
             } else {
                 // Log details of the failure
@@ -252,9 +277,8 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     
     @objc func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
         // this is for map and user location
+        
         let query = PFQuery(className: "Locations")
         
         let userlocation: CLLocation = locations[0]
@@ -282,15 +306,14 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         let anno5 = MKPointAnnotation()
         
         //check current userID for objectID
-        let userObjectID = userdic[user] as String!
-        //print(userObjectID)
-        print("&&&&&&&&&&&&&&&&&&&&&")
+        let userObjectID = userdic[PFUser.currentUser()!.valueForKey("firstName")! as! String]
+        print(userObjectID)
         
         
         //sending user location data to parse
-        if(userObjectID != nil && sharing)
-        {
-            query.getObjectInBackgroundWithId(userObjectID, block: { (object:PFObject?, error:NSError?) -> Void in
+//        if(userObjectID != nil)
+//        {
+            query.getObjectInBackgroundWithId(userObjectID!, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
                 {
@@ -298,6 +321,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 }
                 else if let product = object
                 {
+                    
                     let la = latitude
                     let lo = longitude
                     product["currentLocation"] = PFGeoPoint(latitude: la, longitude: lo)
@@ -309,8 +333,8 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 }
                 
             })
-        }
-        
+//        }
+    
         
         //to show others locations
         tempuserdic = userdic
@@ -357,19 +381,20 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //                        product1.saveInBackground()
                         
                         // until here
+                        if(product1["latitude"] != nil && product1["longitude"] != nil){
+                            let a = product1["latitude"] as! Double
+                            let b = product1["longitude"] as! Double
+                            let c = product1["uID"] as! String
                         
-                        let a = product1["latitude"] as! Double
-                        let b = product1["longitude"] as! Double
-                        let c = product1["uID"] as! String
-                        
-                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
-                        
-                        
-                        anno1.coordinate = loc
-                        anno1.title = c
+                            let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
                         
-                        self.map1.addAnnotation(anno1)
+                            anno1.coordinate = loc
+                            anno1.title = c
+                        
+                        
+                            self.map1.addAnnotation(anno1)
+                        }
                         
                     }
                     
@@ -392,7 +417,6 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         {
             let a1 = tempuserdic.keys.first!
             let a2 = tempuserdic.values.first!
-            print("{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{")
             
             
             query2.getObjectInBackgroundWithId(a2, block: { (object:PFObject?, error:NSError?) -> Void in
@@ -420,18 +444,19 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //                        product1.saveInBackground()
                         
                         // until here
+                        if(product1["latitude"] != nil && product1["longitude"] != nil){
+                            let a = product1["latitude"] as! Double
+                            let b = product1["longitude"] as! Double
+                            let c = product1["uID"] as! String
                         
-                        let a = product1["latitude"] as! Double
-                        let b = product1["longitude"] as! Double
-                        let c = product1["uID"] as! String
+                            let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
-                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
-                        
-                        anno2.coordinate = loc
-                        anno2.title = c
+                            anno2.coordinate = loc
+                            anno2.title = c
                         
                         
-                        self.map1.addAnnotation(anno2)
+                            self.map1.addAnnotation(anno2)
+                        }
                         
                     }
                     
@@ -476,18 +501,19 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //                        product1.saveInBackground()
                         
                         // until here
+                        if(product1["latitude"] != nil && product1["longitude"] != nil){
+                            let a = product1["latitude"] as! Double
+                            let b = product1["longitude"] as! Double
+                            let c = product1["uID"] as! String
                         
-                        let a = product1["latitude"] as! Double
-                        let b = product1["longitude"] as! Double
-                        let c = product1["uID"] as! String
+                            let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
-                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
-                        
-                        anno3.coordinate = loc
-                        anno3.title = c
+                            anno3.coordinate = loc
+                            anno3.title = c
                         
                         
-                        self.map1.addAnnotation(anno3)
+                            self.map1.addAnnotation(anno3)
+                        }
                         
                     }
                     
@@ -533,18 +559,19 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //                        product1.saveInBackground()
                         
                         // until here
+                        if(product1["latitude"] != nil && product1["longitude"] != nil){
+                            let a = product1["latitude"] as! Double
+                            let b = product1["longitude"] as! Double
+                            let c = product1["uID"] as! String
                         
-                        let a = product1["latitude"] as! Double
-                        let b = product1["longitude"] as! Double
-                        let c = product1["uID"] as! String
+                            let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
-                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
-                        
-                        anno4.coordinate = loc
-                        anno4.title = c
+                            anno4.coordinate = loc
+                            anno4.title = c
                         
                         
-                        self.map1.addAnnotation(anno4)
+                            self.map1.addAnnotation(anno4)
+                        }
                         
                     }
                     
@@ -590,18 +617,19 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                         //                        product1.saveInBackground()
                         
                         // until here
+                        if(product1["latitude"] != nil && product1["longitude"] != nil){
+                            let a = product1["latitude"] as! Double
+                            let b = product1["longitude"] as! Double
+                            let c = product1["uID"] as! String
                         
-                        let a = product1["latitude"] as! Double
-                        let b = product1["longitude"] as! Double
-                        let c = product1["uID"] as! String
+                            let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
                         
-                        let loc:CLLocationCoordinate2D = CLLocationCoordinate2DMake(a, b)
-                        
-                        anno5.coordinate = loc
-                        anno5.title = c
+                            anno5.coordinate = loc
+                            anno5.title = c
                         
                         
-                        self.map1.addAnnotation(anno5)
+                            self.map1.addAnnotation(anno5)
+                        }
                         
                     }
                     

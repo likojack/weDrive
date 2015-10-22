@@ -7,10 +7,15 @@
 //
 
 import Foundation
-class ForgetPasswordVC: UIViewController{
+class ForgetPasswordVC: UIViewController, UITextFieldDelegate{
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.emailTextField.delegate = self;
+ }
 	
 	@IBOutlet weak var emailTextField: UITextField!
-	
+
 	@IBAction func sendRecoveryEmailButton(sender: UIButton) {
 		let userEmail=emailTextField.text
 		PFUser.requestPasswordResetForEmailInBackground(userEmail!){
@@ -22,5 +27,14 @@ class ForgetPasswordVC: UIViewController{
 				print(error)
 			}
 		}
+	}
+	//dismiss keyboard on pressing return
+	func textFieldShouldReturn(emailTextField: UITextField) -> Bool {
+		emailTextField.resignFirstResponder()
+		return true;
+	}
+	//dismiss keyboard on pressing anywhere
+	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		self.view.endEditing(true)
 	}
 }
