@@ -52,20 +52,22 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
     var notemptyDictionary:Bool = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        self.builddic(self.gname)
-//        sleep(5)
-        var coords_start: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 142)
-        var coords_dest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 143)
+//        super.viewDidLoad()
+////        self.builddic(self.gname)
+////        sleep(5)
+//        var coords_start: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 142)
+//        var coords_dest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 143)
         let serial_queue = dispatch_queue_create( "serial queue", nil)
-        dispatch_async( serial_queue) {
+        dispatch_async(serial_queue) {
+            super.viewDidLoad()
+            //        self.builddic(self.gname)
+            //        sleep(5)
+            var coords_start: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 142)
+            var coords_dest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(-35.27, 143)
             self.builddic(self.gname)
             
         }
-        dispatch_async( serial_queue) {
-
-            
-        
+        dispatch_async(serial_queue) {
         let query = PFQuery(className: "Events")
         query.whereKey("eventName", equalTo:self.gname )
         query.findObjectsInBackgroundWithBlock {
@@ -77,12 +79,12 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                     let start_lo : Double = objects[0]["start_long"] as! Double!
                     let end_la : Double = objects[0]["end_la"] as! Double!
                     let end_lo : Double = objects[0]["end_long"] as! Double!
-                    coords_start.latitude = start_la
-                    coords_dest.latitude = end_la
-                    coords_start.longitude = start_lo
-                    coords_dest.longitude = end_lo
-                    self.startp.coordinate = coords_start
-                    self.destp.coordinate = coords_dest
+                    self.coords_start.latitude = start_la
+                    self.coords_dest.latitude = end_la
+                    self.coords_start.longitude = start_lo
+                    self.coords_dest.longitude = end_lo
+                    self.startp.coordinate = self.coords_start
+                    self.destp.coordinate = self.coords_dest
                     
                     self.map1.addAnnotation(self.startp)
                     self.map1.addAnnotation(self.destp)
@@ -311,8 +313,8 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
         
         
         //sending user location data to parse
-//        if(userObjectID != nil)
-//        {
+        if(userObjectID != nil)
+        {
             query.getObjectInBackgroundWithId(userObjectID!, block: { (object:PFObject?, error:NSError?) -> Void in
                 
                 if error != nil
@@ -333,7 +335,7 @@ class LocationSharingViewController: UIViewController, MKMapViewDelegate, CLLoca
                 }
                 
             })
-//        }
+        }
     
         
         //to show others locations
